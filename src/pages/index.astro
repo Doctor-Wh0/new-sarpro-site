@@ -20,7 +20,7 @@ const featuredProducts = allProducts.slice(0, 6);
   description="Официальный поставщик сейфов, пломб, ККТ и банковского оборудования. Доставка по РФ. Гарантия качества."
 >
   <!-- Hero section -->
-  <section class="pt-12 pb-20 md:pt-20 md:pb-32 bg-gradient-to-r from-primary-500 to-primary-600 text-white">
+  <section class="pt-12 pb-20 md:pt-20 md:pb-32 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
     <Container>
       <div class="max-w-2xl">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -32,13 +32,13 @@ const featuredProducts = allProducts.slice(0, 6);
         <div class="flex flex-col sm:flex-row gap-4">
           <a 
             href="/catalog" 
-            class="bg-accent-light text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition text-center"
+            class="bg-green-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition text-center"
           >
             Перейти в каталог
           </a>
           <a 
             href="/contacts" 
-            class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-primary-500 transition text-center"
+            class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-blue-600 transition text-center"
           >
             Связаться с нами
           </a>
@@ -56,7 +56,7 @@ const featuredProducts = allProducts.slice(0, 6);
         {categories.map(category => (
           <a href={`/categories/${category.slug}`} class="group">
             <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition">
-              <div class="w-full h-48 bg-neutral-light overflow-hidden">
+              <div class="w-full h-48 bg-gray-100 overflow-hidden">
                 <img 
                   src={category.image} 
                   alt={category.name}
@@ -64,13 +64,13 @@ const featuredProducts = allProducts.slice(0, 6);
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-bold mb-2 group-hover:text-primary-500 transition">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition">
                   {category.name}
                 </h3>
                 <p class="text-gray-600 text-sm mb-4">
                   {category.description}
                 </p>
-                <span class="text-primary-500 font-semibold group-hover:gap-1">
+                <span class="text-blue-600 font-semibold group-hover:gap-1">
                   Подробнее →
                 </span>
               </div>
@@ -82,7 +82,7 @@ const featuredProducts = allProducts.slice(0, 6);
   </section>
 
   <!-- Рекомендуемые товары -->
-  <section class="py-16 md:py-24 bg-neutral-light">
+  <section class="py-16 md:py-24 bg-gray-100">
     <Container>
       <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Популярные товары</h2>
       <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
@@ -98,7 +98,7 @@ const featuredProducts = allProducts.slice(0, 6);
       <div class="mt-12 text-center">
         <a 
           href="/catalog"
-          class="inline-block bg-primary-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-primary-600 transition"
+          class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition"
         >
           Смотреть все товары
         </a>
@@ -110,7 +110,7 @@ const featuredProducts = allProducts.slice(0, 6);
   <TrustBadges />
 
   <!-- CTA section -->
-  <section class="py-16 md:py-24 bg-primary-500 text-white">
+  <section class="py-16 md:py-24 bg-blue-600 text-white">
     <Container>
       <div class="max-w-2xl mx-auto text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-6">
@@ -121,7 +121,7 @@ const featuredProducts = allProducts.slice(0, 6);
         </p>
         <a 
           href="/contacts"
-          class="inline-block bg-accent-light text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition"
+          class="inline-block bg-green-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition"
         >
           Оставить заявку
         </a>

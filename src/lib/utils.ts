@@ -5,7 +5,7 @@ import productsData from '@/data/products.json';
  * Загружает все товары из JSON
  */
 export async function getAllProducts(): Promise<Product[]> {
-  return productsData.products || [];
+  return (productsData.products || []) as Product[];
 }
 
 /**

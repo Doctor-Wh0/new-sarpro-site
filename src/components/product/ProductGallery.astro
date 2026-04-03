@@ -16,7 +16,7 @@ const images = [product.image, ...product.gallery];
 
 <div id="product-gallery">
   <!-- Основное изображение -->
-  <div class="mb-4 w-full h-96 bg-neutral-light rounded-lg overflow-hidden">
+  <div class="mb-4 w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
     <img 
       id="gallery-main-image"
       src={product.image} 
@@ -31,7 +31,7 @@ const images = [product.image, ...product.gallery];
       {images.map((img, index) => (
         <button
           class={`flex-shrink-0 w-20 h-20 rounded-lg border-2 transition ${
-            index === 0 ? 'border-primary-500' : 'border-transparent hover:border-gray-300'
+            index === 0 ? 'border-blue-600' : 'border-transparent hover:border-gray-300'
           }`}
           onclick={`document.getElementById('gallery-main-image').src = '${img}'`}
           aria-label={`View image ${index + 1}`}
