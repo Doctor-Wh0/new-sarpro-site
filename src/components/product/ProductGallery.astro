@@ -1,0 +1,44 @@
+---
+// src/components/product/ProductGallery.astro
+// Галерея изображений товара
+
+import type { Product } from '@/types';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+// Основное изображение + галерея
+const images = [product.image, ...product.gallery];
+---
+
+<div id="product-gallery">
+  <!-- Основное изображение -->
+  <div class="mb-4 w-full h-96 bg-neutral-light rounded-lg overflow-hidden">
+    <img 
+      id="gallery-main-image"
+      src={product.image} 
+      alt={product.name}
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <!-- Миниатюры -->
+  {images.length > 1 && (
+    <div class="flex gap-2 overflow-x-auto">
+      {images.map((img, index) => (
+        <button
+          class={`flex-shrink-0 w-20 h-20 rounded-lg border-2 transition ${
+            index === 0 ? 'border-primary-500' : 'border-transparent hover:border-gray-300'
+          }`}
+          onclick={`document.getElementById('gallery-main-image').src = '${img}'`}
+          aria-label={`View image ${index + 1}`}
+        >
+          <img src={img} alt={`${product.name} - изображение ${index + 1}`} class="w-full h-full object-cover rounded" />
+        </button>
+      ))}
+    </div>
+  )}
+</div>

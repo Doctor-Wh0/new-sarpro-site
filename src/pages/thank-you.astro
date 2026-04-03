@@ -1,0 +1,96 @@
+---
+// src/pages/thank-you.astro
+// Спасибо за заявку
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/layout/Container.astro';
+---
+
+<BaseLayout 
+  title="Спасибо за вашу заявку — SARPRO"
+  description="Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время."
+>
+  <Container>
+    <div class="py-16 md:py-24 text-center">
+      <div class="text-6xl md:text-7xl mb-6">✓</div>
+
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Спасибо за вашу заявку!</h1>
+
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Ваша заявка успешно отправлена нашей команде. Мы свяжемся с вами в течение 24 часов через выбранный способ связи.
+      </p>
+
+      <!-- Timeline -->
+      <div class="max-w-2xl mx-auto my-12">
+        <div class="space-y-4 text-left">
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center font-bold">1</div>
+              <div class="w-1 h-12 bg-green-200 mt-2"></div>
+            </div>
+            <div class="pb-8">
+              <h3 class="font-bold text-lg">Получение заявки</h3>
+              <p class="text-gray-600">Ваша заявка успешно получена</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">2</div>
+              <div class="w-1 h-12 bg-blue-200 mt-2"></div>
+            </div>
+            <div class="pb-8">
+              <h3 class="font-bold text-lg">Обработка заявки</h3>
+              <p class="text-gray-600">В течение 1-24 часов</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold">3</div>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">Связь с вами</h3>
+              <p class="text-gray-600">Мы отправим подробный ответ по email или позвоним</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Что дальше -->
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-8 max-w-2xl mx-auto mb-12 text-left">
+        <h2 class="font-bold text-lg mb-4">Что дальше?</h2>
+        <ul class="space-y-3 text-gray-700">
+          <li>✓ Проверьте вашу почту (включая папку "Спам")</li>
+          <li>✓ Будьте готовы к звонку в указанное время</li>
+          <li>✓ Приготовьте вопросы о товаре или доставке</li>
+          <li>✓ Мы предложим наиболее подходящее решение</li>
+        </ul>
+      </div>
+
+      <!-- Контакты -->
+      <div class="mb-12">
+        <p class="text-gray-600 mb-4">Если вы не получите ответ за 24 часа, свяжитесь с нами:</p>
+        <p class="text-lg">
+          <a href="tel:+79053860870" class="text-primary-500 font-bold hover:underline">+7 (905) 386-08-70</a>
+        </p>
+      </div>
+
+      <!-- Кнопки -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/catalog"
+          class="bg-primary-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-primary-600 transition"
+        >
+          Продолжить покупки
+        </a>
+        <a 
+          href="/"
+          class="border-2 border-primary-500 text-primary-500 px-8 py-3 rounded-lg font-bold hover:bg-primary-50 transition"
+        >
+          На главную
+        </a>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>

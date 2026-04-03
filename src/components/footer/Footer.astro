@@ -1,0 +1,86 @@
+---
+// src/components/footer/Footer.astro
+// Основной футер
+
+import { COMPANY_INFO, SOCIAL_LINKS } from '@/lib/constants';
+import CompanyInfo from './CompanyInfo.astro';
+
+const currentYear = new Date().getFullYear();
+
+const footerLinks = {
+  Каталог: [
+    { label: 'Сейфы', href: '/categories/sejfy' },
+    { label: 'Пломбы', href: '/categories/plomby-i-sredstva-oplambirovaniya' },
+    { label: 'Кассовые аппараты', href: '/categories/kassovye-apparaty-i-fiskalnoe-oborudovanie' },
+  ],
+  Информация: [
+    { label: 'О нас', href: '/about' },
+    { label: 'Доставка и оплата', href: '/delivery' },
+    { label: 'Гарантия', href: '/warranty' },
+    { label: 'Контакты', href: '/contacts' },
+  ],
+  Документы: [
+    { label: 'Политика конфиденциальности', href: '/privacy' },
+    { label: 'Условия продажи', href: '/offer' },
+  ],
+};
+---
+
+<footer class="bg-neutral-dark text-white py-12 md:py-16">
+  <div class="container">
+    <!-- Основная часть -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <!-- О компании -->
+      <div>
+        <h3 class="font-bold text-lg mb-4">SARPRO</h3>
+        <p class="text-sm text-gray-300 mb-4">
+          Официальный поставщик сейфов, пломб и оборудования для безопасности компаний в России.
+        </p>
+        <div class="flex gap-3">
+          <a href={SOCIAL_LINKS.vk} target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition">
+            <span class="sr-only">VK</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M11.5 11.5h1.5v8h-1.5zm6-1.5c.3 0 .5.2.5.5v8c0 .3-.2.5-.5.5h-1c-.3 0-.5-.2-.5-.5v-4.5h-1V20c0 .3-.2.5-.5.5h-1c-.3 0-.5-.2-.5-.5v-8h-1v-1c0-.3.2-.5.5-.5h1V7c0-2 1.3-3 3.5-3h1.5v.75c0 .25-.08.7-.08.7h-.92c-1.1 0-1.5.5-1.5 1.5V8.5h2.5V10z" />
+            </svg>
+          </a>
+          <a href={SOCIAL_LINKS.telegram} target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition">
+            <span class="sr-only">Telegram</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.02-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.98-.65-.34-1.01.21-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.06-.16-.04-.25-.02-.11.02-1.93 1.23-5.46 3.62-.52.36-.99.53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.02-.23.27-.45.74-.68 2.93-1.27 4.88-2.11 5.86-2.52 2.8-1.2 3.39-1.41 3.77-1.42.08 0 .27.02.39.12.1.08.13.2.12.33z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Ссылки по категориям -->
+      {Object.entries(footerLinks).map(([title, links]) => (
+        <div>
+          <h4 class="font-bold text-sm mb-4 uppercase tracking-wide">{title}</h4>
+          <ul class="space-y-2">
+            {links.map((link) => (
+              <li>
+                <a href={link.href} class="text-gray-300 hover:text-white transition text-sm">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      <!-- Контакты и реквизиты -->
+      <CompanyInfo />
+    </div>
+
+    <!-- Разделитель -->
+    <hr class="border-gray-700 my-8" />
+
+    <!-- Нижняя часть -->
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+      <p>© {currentYear} {COMPANY_INFO.name}. Все права защищены.</p>
+      <p>
+        {COMPANY_INFO.inn} | {COMPANY_INFO.ogrn}
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,22 @@
+---
+// src/components/common/Container.astro
+// Контейнер с максимальной шириной
+
+interface Props {
+  class?: string;
+  size?: 'sm' | 'base' | 'lg' | 'xl';
+}
+
+const { class: className = '', size = 'lg' } = Astro.props;
+
+const sizes = {
+  sm: 'max-w-2xl',
+  base: 'max-w-4xl',
+  lg: 'max-w-7xl',
+  xl: 'max-w-screen-2xl',
+};
+---
+
+<div class={`mx-auto px-4 md:px-6 lg:px-8 ${sizes[size]} ${className}`}>
+  <slot />
+</div>

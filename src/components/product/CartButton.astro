@@ -1,0 +1,78 @@
+---
+// Кнопка добавления в корзину
+interface Props {
+  productId: string;
+  productName: string;
+}
+
+const { productId, productName } = Astro.props;
+---
+
+<button
+  class="add-to-cart-btn w-full bg-accent-light hover:bg-accent-light/90 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 ease-in-out transform hover:scale-105 flex items-center justify-center gap-2"
+  data-product-id={productId}
+  data-product-name={productName}
+>
+  <span class="button-text">В корзину</span>
+  <span class="success-icon" style="display: none;">✓</span>
+</button>
+
+<script>
+  // Функция для работы с корзиной
+  function initCartButton() {
+    const buttons = document.querySelectorAll('.add-to-cart-btn');
+    
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const productId = btn.getAttribute('data-product-id');
+        const productName = btn.getAttribute('data-product-name');
+        
+        if (!productId || !productName) return;
+        
+        // Получить текущую корзину из localStorage
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        
+        // Добавить товар в корзину
+        const existingItem = cart.find((item: any) => item.productId === productId);
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            productId,
+            productName,
+            quantity: 1,
+            addedAt: new Date().toISOString(),
+          });
+        }
+        
+        // Сохранить корзину в localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Визуальная обратная связь
+        const textSpan = btn.querySelector('.button-text');
+        const iconSpan = btn.querySelector('.success-icon');
+        
+        if (textSpan && iconSpan) {
+          textSpan.style.display = 'none';
+          iconSpan.style.display = 'inline';
+          
+          // Вернуть к нормальному состоянию через 2 секунды
+          setTimeout(() => {
+            textSpan.style.display = 'inline';
+            iconSpan.style.display = 'none';
+          }, 2000);
+        }
+        
+        // Уведомление о добавлении в корзину
+        console.log(`"${productName}" добавлен в корзину. Всего товаров: ${cart.length}`);
+      });
+    });
+  }
+  
+  // Инициализировать при загрузке страницы
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCartButton);
+  } else {
+    initCartButton();
+  }
+</script>

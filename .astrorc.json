@@ -1,0 +1,24 @@
+# Astro Build Output Environment Variables Logs Hot Module Replacement Runtime
+
+.astro/
+.idea/
+.vscode/
+dist/
+*.log
+node_modules/
+
+# Misc
+
+.DS_Store
+*.pem
+*.crt
+*.key
+
+# IDE
+
+.vscode/extensions.json
+.idea/
+
+# Dependencies
+
+pnpm-lock.yaml

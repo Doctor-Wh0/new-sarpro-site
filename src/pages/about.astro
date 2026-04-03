@@ -1,0 +1,90 @@
+---
+// src/pages/about.astro
+// О компании
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import TrustBadges from '@/components/common/TrustBadges.astro';
+import Container from '@/components/layout/Container.astro';
+import { COMPANY_INFO } from '@/lib/constants';
+---
+
+<BaseLayout 
+  title="О компании SARPRO"
+  description="Узнайте больше о компании SARPRO, нашей истории, миссии и ценностях."
+>
+  <Container>
+    <Breadcrumb items={[
+      { label: 'Главная', url: '/' },
+      { label: 'О нас', url: '/about' }
+    ]} />
+
+    <div class="py-12 md:py-16">
+      <h1 class="text-4xl md:text-5xl font-bold mb-8">О компании SARPRO</h1>
+
+      <div class="prose prose-lg max-w-3xl">
+        <p class="text-xl text-gray-700 mb-8">
+          SARPRO — официальный поставщик оборудования безопасности для компаний, банков и государственных учреждений России. Более 20 лет мы помогаем защищать ценности и важную информацию наших клиентов.
+        </p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6">Наша история</h2>
+        <p class="text-gray-700 mb-4">
+          Компания основана в начале 2000-х годов как дистрибьютор высокопрочных сейфов и сопутствующего оборудования. За годы работы мы завоевали доверие тысяч клиентов благодаря качеству, надёжности и профессионализму нашей команды.
+        </p>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6">Что мы предлагаем</h2>
+        <ul class="space-y-3 text-gray-700 mb-8">
+          <li>✓ Сейфы всех классов взломостойкости и огнестойкости</li>
+          <li>✓ Пломбы и средства опломбирования для защиты от подделок</li>
+          <li>✓ Кассовые аппараты и фискальные регистраторы (ККТ)</li>
+          <li>✓ Специализированное банковское оборудование</li>
+          <li>✓ Офисную мебель для безопасного хранения</li>
+          <li>✓ Консультацию и поддержку на всех этапах</li>
+        </ul>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6">Наши ценности</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+          <div class="p-6 bg-blue-50 rounded-lg">
+            <h3 class="font-bold text-lg mb-2">Надёжность</h3>
+            <p class="text-gray-700">Каждый товар проходит тщательный контроль качества и соответствует международным стандартам.</p>
+          </div>
+          <div class="p-6 bg-green-50 rounded-lg">
+            <h3 class="font-bold text-lg mb-2">Профессионализм</h3>
+            <p class="text-gray-700">Наша команда состоит из опытных специалистов, готовых помочь с выбором и установкой.</p>
+          </div>
+          <div class="p-6 bg-yellow-50 rounded-lg">
+            <h3 class="font-bold text-lg mb-2">Доступность</h3>
+            <p class="text-gray-700">Доставляем товары по всей России в кратчайшие сроки по конкурентным ценам.</p>
+          </div>
+          <div class="p-6 bg-purple-50 rounded-lg">
+            <h3 class="font-bold text-lg mb-2">Ответственность</h3>
+            <p class="text-gray-700">Гарантируем качество и полную ответственность перед каждым клиентом.</p>
+          </div>
+        </div>
+
+        <h2 class="text-3xl font-bold mt-12 mb-6">Почему выбирают нас</h2>
+        <ul class="space-y-3 text-gray-700 mb-8">
+          <li><strong>Опыт:</strong> Более 20 лет на рынке оборудования безопасности</li>
+          <li><strong>Сертификация:</strong> Все товары имеют необходимые сертификаты и соответствуют российским стандартам</li>
+          <li><strong>Гарантия:</strong> Гарантия на все товары от 1 до 3 лет</li>
+          <li><strong>Поддержка:</strong> Круглосуточная консультация и помощь в выборе товара</li>
+          <li><strong>Удобство:</strong> Быстрая доставка по РФ и простое оформление заказа</li>
+        </ul>
+
+        <div class="bg-primary-50 p-8 rounded-lg mt-12">
+          <h3 class="text-2xl font-bold mb-4">Реквизиты компании</h3>
+          <div class="space-y-2 text-gray-700">
+            <p><strong>Полное имя:</strong> {COMPANY_INFO.name}</p>
+            <p><strong>ИНН:</strong> {COMPANY_INFO.inn}</p>
+            <p><strong>ОГРН:</strong> {COMPANY_INFO.ogrn}</p>
+            <p><strong>Юридический адрес:</strong> {COMPANY_INFO.legalAddress}</p>
+            <p><strong>Email:</strong> {COMPANY_INFO.email}</p>
+            <p><strong>Телефон:</strong> {COMPANY_INFO.phoneMain}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+
+  <TrustBadges />
+</BaseLayout>

@@ -1,0 +1,34 @@
+User-Agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json
+Disallow: /api/
+Disallow: /cgi-bin/
+Disallow: /*?utm_source=
+Disallow: /*?utm_medium=
+Disallow: /*?utm_campaign=
+
+# Доступ ботам рекомендуется
+Allow: /
+Allow: /catalog
+Allow: /categories/
+Allow: /products/
+Allow: /about
+Allow: /contacts
+Allow: /delivery
+Allow: /warranty
+
+# Sitemap
+Sitemap: https://sarpro.ru/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
+
+# User agents
+User-Agent: Googlebot
+Disallow:
+Crawl-delay: 0
+
+User-Agent: Bingbot
+Disallow:
+Crawl-delay: 1

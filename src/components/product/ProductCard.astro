@@ -1,0 +1,75 @@
+---
+// src/components/product/ProductCard.astro
+// Карточка товара для сетки
+
+import type { Product } from '@/types';
+import { formatPrice } from '@/lib/utils';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+  <!-- Изображение -->
+  <div class="relative w-full h-48 md:h-56 bg-neutral-light overflow-hidden">
+    <img 
+      src={product.image} 
+      alt={product.name}
+      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+      loading="lazy"
+    />
+    <div class="absolute top-3 right-3 bg-accent-light text-white px-3 py-1 rounded text-xs font-semibold">
+      {product.availability === 'В наличии' ? '✓ В наличии' : product.availability}
+    </div>
+  </div>
+
+  <!-- Содержимое -->
+  <div class="p-4">
+    <!-- Производитель -->
+    <p class="text-xs text-gray-500 uppercase tracking-wide mb-2">
+      {product.manufacturer}
+    </p>
+
+    <!-- Название товара -->
+    <h3 class="font-bold text-base md:text-lg mb-2 line-clamp-2">
+      <a href={`/products/${product.slug}`} class="hover:text-primary-500 transition">
+        {product.name}
+      </a>
+    </h3>
+
+    <!-- Описание -->
+    <p class="text-sm text-gray-600 mb-3 line-clamp-2">
+      {product.description}
+    </p>
+
+    <!-- Характеристики -->
+    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+      {product.warranty && (
+        <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded">
+          Гарантия: {product.warranty}
+        </span>
+      )}
+      {product.countryOfOrigin && (
+        <span class="bg-green-50 text-green-700 px-2 py-1 rounded">
+          {product.countryOfOrigin}
+        </span>
+      )}
+    </div>
+
+    <!-- Цена и кнопка -->
+    <div class="flex items-center justify-between">
+      <div class="font-bold text-lg">
+        {formatPrice(product.price)}
+      </div>
+      <a 
+        href={`/products/${product.slug}`}
+        class="bg-accent-light text-white px-4 py-2 rounded font-semibold hover:bg-green-700 transition"
+      >
+        Подробнее →
+      </a>
+    </div>
+  </div>
+</div>

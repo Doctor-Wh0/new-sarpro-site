@@ -1,0 +1,64 @@
+---
+// src/pages/catalog.astro
+// Страница каталога всех товаров
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import TrustBadges from '@/components/common/TrustBadges.astro';
+import ProductCard from '@/components/product/ProductCard.astro';
+import Container from '@/components/layout/Container.astro';
+import { getAllProducts, getAllCategories } from '@/lib/utils';
+
+const products = await getAllProducts();
+const categories = await getAllCategories();
+---
+
+<BaseLayout 
+  title="Каталог товаров — SARPRO"
+  description="Полный каталог сейфов, пломб, кассовых аппаратов и оборудования безопасности от SARPRO."
+>
+  <Container>
+    <!-- Breadcrumb -->
+    <Breadcrumb items={[
+      { label: 'Главная', url: '/' },
+      { label: 'Каталог', url: '/catalog' }
+    ]} />
+
+    <!-- Заголовок -->
+    <div class="py-8 md:py-12 border-b border-gray-200">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Полный каталог товаров</h1>
+      <p class="text-lg text-gray-600">
+        {products.length} товаров в {categories.length} категориях
+      </p>
+    </div>
+
+    <!-- Категории (фильтры) -->
+    <div class="py-8 flex flex-wrap gap-2">
+      <a 
+        href="/catalog"
+        class="px-4 py-2 rounded-full bg-primary-500 text-white font-semibold"
+      >
+        Все товары
+      </a>
+      {categories.map(category => (
+        <a 
+          href={`/categories/${category.slug}`}
+          class="px-4 py-2 rounded-full border-2 border-primary-500 text-primary-500 hover:bg-primary-50 transition"
+        >
+          {category.name}
+        </a>
+      ))}
+    </div>
+
+    <!-- Товары -->
+    <div class="py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {products.map(product => (
+          <ProductCard product={product} />
+        ))}
+      </div>
+    </div>
+  </Container>
+
+  <TrustBadges />
+</BaseLayout>

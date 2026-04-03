@@ -1,0 +1,144 @@
+---
+// src/pages/warranty.astro
+// Гарантия и возврат
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import TrustBadges from '@/components/common/TrustBadges.astro';
+import Container from '@/components/layout/Container.astro';
+---
+
+<BaseLayout 
+  title="Гарантия и возврат — SARPRO"
+  description="Информация о гарантийном обслуживании и процедуре возврата товаров."
+>
+  <Container>
+    <Breadcrumb items={[
+      { label: 'Главная', url: '/' },
+      { label: 'Гарантия и возврат', url: '/warranty' }
+    ]} />
+
+    <div class="py-12 md:py-16">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Гарантия и возврат</h1>
+      <p class="text-lg text-gray-600 mb-12">
+        Полная защита всех наших товаров гарантией и политикой возврата
+      </p>
+
+      <!-- Гарантия -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-8">Гарантия</h2>
+        
+        <div class="bg-green-50 border border-green-200 rounded-lg p-8 mb-8">
+          <h3 class="font-bold text-xl mb-4">Все товары SARPRO имеют гарантию:</h3>
+          <ul class="space-y-3 text-gray-700">
+            <li>✓ <strong>Сейфы:</strong> 2—3 года в зависимости от класса</li>
+            <li>✓ <strong>Пломбы и средства опломбирования:</strong> гарантия качества</li>
+            <li>✓ <strong>Кассовые аппараты и ККТ:</strong> 1 год с возможностью продления</li>
+            <li>✓ <strong>Банковское оборудование:</strong> 1—2 года в зависимости от типа</li>
+            <li>✓ <strong>Мебель:</strong> 2 года на конструкцию и покрытие</li>
+          </ul>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-bold text-lg mb-2">Что входит в гарантию?</h3>
+            <ul class="space-y-2 text-gray-700 list-disc list-inside">
+              <li>Бесплатный ремонт или замена неисправных деталей</li>
+              <li>Замена товара на новый при неисправимом брака</li>
+              <li>Техническая поддержка и консультации</li>
+              <li>Обслуживание и регулировка (для сейфов)</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-lg mb-2">Что НЕ входит в гарантию?</h3>
+            <ul class="space-y-2 text-gray-700 list-disc list-inside">
+              <li>Ущерб в результате неправильной установки</li>
+              <li>Повреждение вследствие попытки взлома или злоупотребления</li>
+              <li>Естественный износ и коррозия от неправильного ухода</li>
+              <li>Повреждение при транспортировке после получения</li>
+              <li>Программное обеспечение (для электронных систем)</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-lg mb-2">Как активировать гарантию?</h3>
+            <ol class="space-y-2 text-gray-700 list-decimal list-inside">
+              <li>Сохраняйте оригинальную упаковку и документы товара</li>
+              <li>Заполните гарантийный талон (прилагается к товару)</li>
+              <li>Свяжитесь с нами при обнаружении неисправности</li>
+              <li>Мы организуем бесплатный ремонт или замену</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Возврат -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-8">Возврат товара</h2>
+        
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-8 mb-8">
+          <h3 class="font-bold text-xl mb-4">Срок возврата: 30 дней с момента получения</h3>
+          <p class="text-gray-700">
+            Вы можете вернуть товар без объяснения причины, если он не был использован и находится в оригинальной упаковке.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-bold text-lg mb-2">Условия возврата:</h3>
+            <ul class="space-y-2 text-gray-700 list-disc list-inside">
+              <li>Товар не установлен и не использован</li>
+              <li>Оригинальная упаковка и документы сохранены</li>
+              <li>Товар не повреждён и без следов использования</li>
+              <li>Наличие гарантийного талона или счёта</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-lg mb-2">Процесс возврата:</h3>
+            <ol class="space-y-2 text-gray-700 list-decimal list-inside">
+              <li>Свяжитесь с нами и сообщите о желании вернуть товар</li>
+              <li>Мы выдадим вам номер RMA (Return Merchandise Authorization)</li>
+              <li>Отправьте товар на указанный адрес на ваш счёт</li>
+              <li>После проверки мы вернём деньги в течение 5—7 дней</li>
+            </ol>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-lg mb-2">Возврат денег:</h3>
+            <p class="text-gray-700 mb-3">
+              При возврате товара мы вернём стоимость за вычетом:
+            </p>
+            <ul class="space-y-2 text-gray-700 list-disc list-inside">
+              <li>Стоимость доставки до вас (первоначальная доставка)</li>
+              <li>Обратная доставка товара от вас</li>
+              <li>Комиссия за обработку (максимум 5% от стоимости)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Обмен -->
+      <div>
+        <h2 class="text-3xl font-bold mb-8">Обмен товара</h2>
+        
+        <p class="text-gray-700 mb-6">
+          Если вас не устроил выбор товара, вы можете заменить его на другой в течение 30 дней. Обмен бесплатен при аналогичной стоимости товаров.
+        </p>
+
+        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-8">
+          <h3 class="font-bold text-lg mb-4">Для обмена:</h3>
+          <ul class="space-y-2 text-gray-700 list-disc list-inside">
+            <li>Товар не должен быть установлен или использован</li>
+            <li>Оригинальная упаковка и документы сохранены</li>
+            <li>Свяжитесь с нами и выберите новый товар</li>
+            <li>Мы организуем обмен без дополнительных затрат</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Container>
+
+  <TrustBadges />
+</BaseLayout>

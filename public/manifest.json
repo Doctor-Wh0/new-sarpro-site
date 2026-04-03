@@ -1,0 +1,32 @@
+{
+  "name": "SARPRO — сейфы, пломбы и оборудование для безопасности",
+  "short_name": "SARPRO",
+  "description": "Официальный поставщик сейфов, пломб, ККТ и банковского оборудования",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0A2540",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/logos/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["business"],
+  "screenshots": [
+    {
+      "src": "/assets/images/og-default.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+---
+// src/pages/products/[slug].astro
+// Динамическая страница товара
+
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import TrustBadges from '@/components/common/TrustBadges.astro';
+import ProductDetail from '@/components/product/ProductDetail.astro';
+import Container from '@/components/layout/Container.astro';
+import { getAllProducts, getCategoryBySlug } from '@/lib/utils';
+import { generateProductSchema } from '@/lib/schema';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const products = await getAllProducts();
+  return products.map(product => ({
+    params: { slug: product.slug },
+    props: { product }
+  }));
+};
+
+interface Props {
+  product: any;
+}
+
+const { product } = Astro.props;
+const category = await getCategoryBySlug(
+  product.categoryId === 'safes' ? 'sejfy' : 
+  product.categoryId === 'seals' ? 'plomby-i-sredstva-oplambirovaniya' :
+  product.categoryId === 'cashing' ? 'kassovye-apparaty-i-fiskalnoe-oborudovanie' :
+  product.categoryId === 'bank-equipment' ? 'bankovskoe-oborudovanie' :
+  'ofisnya-mebel'
+);
+
+const schema = generateProductSchema(product, import.meta.env.SITE || 'https://sarpro.ru');
+---
+
+<BaseLayout 
+  title={`${product.name} — купить в SARPRO`}
+  description={product.description}
+  image={product.image}
+  keywords={[product.name, product.manufacturer, 'купить', 'SARPRO']}
+  ogType="product"
+>
+  <Container>
+    <!-- Breadcrumb -->
+    <Breadcrumb items={[
+      { label: 'Главная', url: '/' },
+      { label: 'Каталог', url: '/catalog' },
+      { label: category?.name || 'Товар', url: category ? `/categories/${category.slug}` : '/catalog' },
+      { label: product.name, url: `/products/${product.slug}` }
+    ]} />
+
+    <!-- Продукт -->
+    <ProductDetail product={product} />
+  </Container>
+
+  <TrustBadges />
+
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</BaseLayout>

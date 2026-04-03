@@ -1,0 +1,154 @@
+---
+// src/layouts/BaseLayout.astro
+// Главный layout для всех страниц
+
+import '@/styles/global.css';
+import type { SEOData } from '@/types';
+import { SITE_CONFIG } from '@/lib/constants';
+import { generateOrganizationSchema } from '@/lib/schema';
+import Header from '@/components/header/Header.astro';
+import Footer from '@/components/footer/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  keywords?: string[];
+  canonical?: string;
+  robots?: string;
+  ogType?: 'website' | 'article' | 'product';
+}
+
+const {
+  title = SITE_CONFIG.title,
+  description = SITE_CONFIG.description,
+  image = '/assets/images/og-default.jpg',
+  keywords = SITE_CONFIG.keywords,
+  canonical = Astro.url.href,
+  robots = SITE_CONFIG.robots,
+  ogType = 'website',
+} = Astro.props;
+
+const baseUrl = import.meta.env.SITE || 'https://sarpro.ru';
+const organizationSchema = generateOrganizationSchema(baseUrl);
+---
+
+<!DOCTYPE html>
+<html lang={SITE_CONFIG.language} dir="ltr">
+  <head>
+    <!-- Charset и основные мета-теги -->
+    <meta charset={SITE_CONFIG.charset} />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0A2540" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(', ')} />
+    <meta name="robots" content={robots} />
+    
+    <!-- Language -->
+    <meta http-equiv="Accept-Language" content={SITE_CONFIG.locale} />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="SARPRO" />
+    <meta property="og:locale" content="ru_RU" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/logos/favicon.svg" type="image/svg+xml" />
+    
+    <!-- Preconnect для оптимизации -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="SARPRO - новости" href="/rss.xml" />
+    
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    
+    <!-- Robots -->
+    <link rel="robots" href="/robots.txt" />
+    
+    <!-- Manifest для PWA (опционально) -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Title -->
+    <title>{title}</title>
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    
+    <!-- Google Analytics (если есть) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXX');
+    </script> -->
+    
+    <!-- Yandex.Metrica (если есть) -->
+    <!-- <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){...})
+    </script> -->
+  </head>
+  
+  <body>
+    <Header />
+    
+    <main id="main-content">
+      <slot />
+    </main>
+    
+    <Footer />
+    
+    <!-- Скрипты для интерактивности на клиенте -->
+    <script define:vars={{ baseUrl }}>
+      // Инициализация глобальных утилит
+      window.__SARPRO_BASE_URL__ = baseUrl;
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  /* Дополнительные глобальные стили */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Выделение текста */
+  ::selection {
+    background-color: rgb(10, 37, 64);
+    color: white;
+  }
+  
+  ::-moz-selection {
+    background-color: rgb(10, 37, 64);
+    color: white;
+  }
+</style>

@@ -1,0 +1,58 @@
+---
+// src/components/header/Header.astro
+// Главное меню и хедер
+
+import { COMPANY_INFO } from '@/lib/constants';
+import MobileMenu from './MobileMenu.astro';
+
+const navItems = [
+  { label: 'Главная', href: '/' },
+  { label: 'Каталог', href: '/catalog' },
+  { label: 'О нас', href: '/about' },
+  { label: 'Контакты', href: '/contacts' },
+];
+---
+
+<header class="bg-primary-500 text-white sticky top-0 z-50 shadow-lg">
+  <div class="container">
+    <div class="flex items-center justify-between h-20">
+      <!-- Логотип -->
+      <a href="/" class="flex items-center gap-2 font-bold text-2xl hover:opacity-80 transition">
+        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+          <span class="text-primary-500 font-bold">S</span>
+        </div>
+        <span class="hidden sm:inline">SARPRO</span>
+      </a>
+
+      <!-- Десктопное меню -->
+      <nav class="hidden md:flex items-center gap-8">
+        {navItems.map((item) => (
+          <a 
+            href={item.href}
+            class="text-white hover:text-primary-200 transition-colors font-medium"
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Контакты (десктоп) -->
+      <div class="hidden lg:flex items-center gap-1 text-sm">
+        <a href={`tel:${COMPANY_INFO.phoneMain.replace(/\D/g, '')}`} class="hover:text-primary-200 transition">
+          {COMPANY_INFO.phoneMain}
+        </a>
+      </div>
+
+      <!-- Мобильное меню -->
+      <div class="md:hidden">
+        <MobileMenu items={navItems} />
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  header {
+    background: linear-gradient(135deg, #0a2540 0%, #0d2e4f 100%);
+  }
+</style>

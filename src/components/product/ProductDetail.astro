@@ -1,0 +1,89 @@
+---
+// src/components/product/ProductDetail.astro
+// Полная информация товара
+
+import type { Product } from '@/types';
+import { formatPrice } from '@/lib/utils';
+import ProductGallery from './ProductGallery.astro';
+import ProductSpecs from './ProductSpecs.astro';
+import ProductCertificates from './ProductCertificates.astro';
+import CartButton from './CartButton.astro';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<div class="py-8 md:py-12">
+  <!-- Hero section с галереей -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12">
+    <!-- Галерея -->
+    <div>
+      <ProductGallery product={product} />
+    </div>
+
+    <!-- Информация товара -->
+    <div>
+      <!-- Хлебная крошка -->
+      <div class="mb-4">
+        <a href="/catalog" class="text-primary-500 hover:underline text-sm">
+          ← Вернуться в каталог
+        </a>
+      </div>
+
+      <!-- Название -->
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">
+        {product.name}
+      </h1>
+
+      <!-- Производитель -->
+      <p class="text-primary-500 font-semibold mb-4">
+        {product.manufacturer}
+      </p>
+
+      <!-- Статус доступности -->
+      <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+        <p class="text-green-800 font-semibold">
+          {product.availability === 'В наличии' 
+            ? '✓ Товар в наличии' 
+            : `${product.availability}`
+          }
+        </p>
+      </div>
+
+      <!-- Описание -->
+      <p class="text-gray-700 text-lg mb-6">
+        {product.longDescription}
+      </p>
+
+      <!-- Цена и кнопка добавления в корзину -->
+      <div class="mb-8 p-6 bg-neutral-light rounded-lg">
+        <p class="text-gray-600 mb-2">Цена</p>
+        <p class="text-4xl font-bold text-primary-500 mb-6">
+          {formatPrice(product.price)}
+        </p>
+        <CartButton productId={product.id} productName={product.name} />
+      </div>
+
+      <!-- Параметры доверия -->
+      <div class="space-y-3 border-t border-gray-200 pt-6">
+        <div>
+          <p class="font-semibold text-gray-800">Гарантия</p>
+          <p class="text-gray-600">{product.warranty}</p>
+        </div>
+        <div>
+          <p class="font-semibold text-gray-800">Страна производства</p>
+          <p class="text-gray-600">{product.countryOfOrigin}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Технические характеристики -->
+  <ProductSpecs specs={product.specs} />
+
+  <!-- Сертификаты -->
+  {product.certificates.length > 0 && <ProductCertificates certificates={product.certificates} />}
+</div>

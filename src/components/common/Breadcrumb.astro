@@ -1,0 +1,40 @@
+---
+// src/components/common/Breadcrumb.astro
+// Хлебная крошка
+
+import { generateBreadcrumbSchema } from '@/lib/schema';
+
+interface Crumb {
+  label: string;
+  url: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+
+const breadcrumbSchema = generateBreadcrumbSchema(items, import.meta.env.SITE || 'https://sarpro.ru');
+---
+
+<nav aria-label="Breadcrumb" class="my-4">
+  <ol class="flex items-center flex-wrap gap-2 text-sm">
+    {items.map((crumb, index) => (
+      <li class="flex items-center gap-2">
+        <a 
+          href={crumb.url} 
+          class="text-primary-500 hover:text-primary-600 transition-colors"
+          aria-current={index === items.length - 1 ? 'page' : undefined}
+        >
+          {crumb.label}
+        </a>
+        {index < items.length - 1 && (
+          <span class="text-gray-400">/</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

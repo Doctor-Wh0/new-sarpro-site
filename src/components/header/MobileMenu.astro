@@ -1,0 +1,66 @@
+---
+// src/components/header/MobileMenu.astro
+// Мобильное меню (бургер)
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  items: NavItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div id="mobile-menu-button" class="cursor-pointer w-10 h-10 flex flex-col justify-center items-center gap-1.5">
+  <span class="w-6 h-0.5 bg-white rounded transition-all"></span>
+  <span class="w-6 h-0.5 bg-white rounded transition-all"></span>
+  <span class="w-6 h-0.5 bg-white rounded transition-all"></span>
+</div>
+
+<nav 
+  id="mobile-menu-overlay" 
+  class="fixed inset-0 bg-black/50 hidden z-40 md:hidden"
+  aria-label="Mobile navigation"
+>
+  <div 
+    id="mobile-menu-panel"
+    class="absolute top-20 left-0 right-0 bg-primary-600 text-white shadow-lg max-h-[calc(100vh-80px)] overflow-y-auto"
+  >
+    <div class="flex flex-col">
+      {items.map((item) => (
+        <a
+          href={item.href}
+          class="px-6 py-4 border-b border-primary-700 hover:bg-primary-700 transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Мобильное меню
+  const button = document.getElementById('mobile-menu-button');
+  const overlay = document.getElementById('mobile-menu-overlay');
+  const links = overlay?.querySelectorAll('a');
+
+  button?.addEventListener('click', () => {
+    overlay?.classList.toggle('hidden');
+  });
+
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.add('hidden');
+    }
+  });
+
+  links?.forEach(link => {
+    link.addEventListener('click', () => {
+      overlay?.classList.add('hidden');
+    });
+  });
+</script>

@@ -1,0 +1,33 @@
+---
+// src/components/product/ProductCertificates.astro
+// Раздел сертификатов
+
+import type { Certificate } from '@/types';
+
+interface Props {
+  certificates: Certificate[];
+}
+
+const { certificates } = Astro.props;
+---
+
+<section class="py-8 md:py-12 border-t border-gray-200">
+  <h2 class="text-2xl md:text-3xl font-bold mb-6">Сертификаты и документы</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {certificates.map((cert) => (
+      <a
+        href={cert.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="p-4 border border-gray-300 rounded-lg hover:shadow-lg transition flex items-center gap-3"
+      >
+        <div class="text-3xl">📄</div>
+        <div>
+          <p class="font-semibold text-primary-500">{cert.name}</p>
+          <p class="text-sm text-gray-600">Скачать PDF</p>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
