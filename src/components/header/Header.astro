@@ -29,7 +29,7 @@ const navItems = [
         {navItems.map((item) => (
           <a 
             href={item.href}
-            class="text-white hover:text-primary-200 transition-colors font-medium"
+            class="text-white hover:text-blue-100 transition-colors font-medium"
           >
             {item.label}
           </a>
@@ -38,7 +38,7 @@ const navItems = [
 
       <!-- Контакты (десктоп) -->
       <div class="hidden lg:flex items-center gap-1 text-sm">
-        <a href={`tel:${COMPANY_INFO.phoneMain.replace(/\D/g, '')}`} class="hover:text-primary-200 transition">
+        <a href={`tel:${COMPANY_INFO.phoneMain.replace(/\D/g, '')}`} class="hover:text-blue-100 transition">
           {COMPANY_INFO.phoneMain}
         </a>
       </div>
