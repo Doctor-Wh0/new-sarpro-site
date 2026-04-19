@@ -8,8 +8,8 @@ export default defineConfig({
   // GitHub Pages URL
   site: 'https://saratov-pro.github.io/saratovabrosimova',
   
-  // Base path для GitHub Pages (подпапка)
-  base: '/saratovabrosimova/',
+  // Base path для GitHub Pages - будет исправляться JavaScript
+  // base: '/saratovabrosimova/',
   
   // Интеграции
   integrations: [tailwind()],
