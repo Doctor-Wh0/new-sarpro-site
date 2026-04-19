@@ -39,10 +39,13 @@ const organizationSchema = generateOrganizationSchema(baseUrl);
     <!-- Fix CSS and other head resources for GitHub Pages subdirectory -->
     <script is:inline>
       window.__baseFixDone = false;
+      const basePath = '/saratovabrosimova';
+      
       function fixHeadResources() {
         if (window.__baseFixDone) return;
-        window.__baseFixDone = true;
-        const basePath = '/saratovabrosimova';
+        const allFixed = document.querySelectorAll('link[href^="/"], script[src^="/"]').length === 0;
+        if (allFixed) return;
+        
         document.querySelectorAll('link[href^="/"], script[src^="/"]').forEach(el => {
           let attr = el.tagName === 'LINK' ? 'href' : 'src';
           let url = el.getAttribute(attr);
@@ -50,8 +53,22 @@ const organizationSchema = generateOrganizationSchema(baseUrl);
             el.setAttribute(attr, basePath + url);
           }
         });
+        window.__baseFixDone = true;
       }
+      
+      // Fix existing resources immediately
       fixHeadResources();
+      
+      // Watch for new resources being added
+      const observer = new MutationObserver((mutations) => {
+        for (let mutation of mutations) {
+          if (mutation.addedNodes.length > 0) {
+            fixHeadResources();
+          }
+        }
+      });
+      
+      observer.observe(document.head, { childList: true });
     </script>
     
     <!-- Charset и основные мета-теги -->
