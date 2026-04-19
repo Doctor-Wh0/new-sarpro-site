@@ -14,7 +14,10 @@ export default defineConfig({
   // Интеграции
   integrations: [tailwind()],
   
-  // Строгий режим TypeScript
+  // Build configuration - don't inline stylesheets
+  build: {
+    inlineStylesheets: 'never'
+  },
   vite: {
     ssr: {
       noExternal: []
