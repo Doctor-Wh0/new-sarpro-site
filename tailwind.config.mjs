@@ -11,24 +11,27 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#f0f5ff',
-          100: '#e0ebfe',
-          200: '#c1d7fe',
-          300: '#a2c3fd',
-          400: '#83affc',
-          500: '#0A2540', // Тёмно-синий (основной)
-          600: '#081d30',
-          700: '#061527',
-          800: '#04101e',
-          900: '#020815'
+          50:  '#f0f4f9',
+          100: '#d9e5f0',
+          200: '#b3cce1',
+          300: '#8db3d2',
+          400: '#6b9fd9',
+          500: '#2563eb',
+          600: '#134e7a',
+          700: '#0d3a5f',
+          800: '#0a2e54',
+          900: '#061c2d',
         },
         accent: {
-          light: '#00C853', // Зелёный (используется в кнопках)
-          DEFAULT: '#00C853',
-          dark: '#1e88e5'   // Синий
+          50:  '#f0fdf4',
+          100: '#dcfce7',
+          400: '#22c55e',
+          500: '#00a862',
+          600: '#008950',
+          700: '#006b3f',
         },
         neutral: {
-          light: '#F8F9FA',
+          light:  '#F8F9FA',
           DEFAULT: '#FFFFFF',
           dark: '#333333'
         }
@@ -86,6 +89,8 @@ export default {
       
       animation: {
         'fade-in': 'fadeIn 0.3s ease-in-out',
+        'fade-in-up': 'fadeInUp 0.6s ease-out',
+        'scale-in': 'scaleIn 0.4s ease-out',
         'slide-up': 'slideUp 0.3s ease-out',
         'slide-down': 'slideDown 0.3s ease-out',
         'bounce-gentle': 'bounceGentle 2s cubic-bezier(0.36, 0, 0.66, -0.56) infinite'
@@ -95,6 +100,14 @@ export default {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' }
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' }
         },
         slideUp: {
           '0%': { transform: 'translateY(10px)', opacity: '0' },

@@ -5,6 +5,12 @@ export default defineConfig({
   // Полностью статический сайт (SSG)
   output: 'static',
   
+  // GitHub Pages URL
+  site: 'https://saratov-pro.github.io/saratovabrosimova',
+  
+  // Base path для GitHub Pages (подпапка)
+  base: '/saratovabrosimova/',
+  
   // Интеграции
   integrations: [tailwind()],
   

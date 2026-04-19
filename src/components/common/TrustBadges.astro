@@ -1,22 +1,48 @@
 ---
 // src/components/common/TrustBadges.astro
-// Элементы доверия
+// Элементы доверия с иконками и градиентами
 
 import { TRUST_BADGES } from '@/lib/constants';
 ---
 
-<section class="py-12 md:py-16 bg-neutral-light">
-  <div class="container">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+<section class="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+  <div class="container max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+    <h2 class="section-title mb-4">Почему выбирают SARPRO</h2>
+    <p class="text-center text-gray-600 mb-16 max-w-2xl mx-auto text-lg">
+      Два десятилетия доверия и надёжности для вашего бизнеса
+    </p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {TRUST_BADGES.map((badge) => (
-        <div class="flex flex-col items-center text-center">
-          <div class="text-4xl mb-4">{badge.icon}</div>
-          <h3 class="text-lg font-semibold text-neutral-dark mb-2">
+        <div class="group p-8 rounded-xl border border-gray-100 
+                    bg-gradient-to-br from-white to-gray-50/50
+                    hover:border-blue-200 hover:shadow-lg
+                    hover:bg-gradient-to-br hover:from-blue-50 hover:to-white
+                    transition-all duration-300 animate-fade-in">
+          
+          <!-- Иконка с фоном -->
+          <div class={`w-16 h-16 rounded-lg mb-4 flex items-center justify-center
+                      bg-gradient-to-br ${badge.bgGradient}
+                      group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
+            <span class="text-3xl">{badge.icon}</span>
+          </div>
+          
+          <!-- Заголовок -->
+          <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
             {badge.title}
           </h3>
-          <p class="text-sm text-gray-600">
+          
+          <!-- Описание -->
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
             {badge.description}
           </p>
+          
+          <!-- Числовой индикатор -->
+          {badge.stat && (
+            <p class="text-2xl font-bold text-blue-600">
+              {badge.stat}
+            </p>
+          )}
         </div>
       ))}
     </div>

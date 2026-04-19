@@ -2,42 +2,98 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Typography improvements */
+@layer base {
+  body {
+    @apply text-gray-900 leading-relaxed;
+    letter-spacing: 0.3px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3 {
+    letter-spacing: -0.5px;
+  }
+}
+
+/* Component upgrades */
 @layer components {
-  /* Кастомные компоненты */
+  /* Primary button - для основных CTA */
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors;
+    @apply px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 
+           hover:from-blue-700 hover:to-blue-800 
+           text-white font-bold rounded-lg
+           transition-all duration-200 shadow-md hover:shadow-lg
+           inline-block;
   }
-
+  
+  /* Secondary button - для альтернативных действий */
+  .btn-secondary {
+    @apply px-6 py-3 border-2 border-blue-600 text-blue-600
+           hover:bg-blue-50 font-bold rounded-lg
+           transition-all duration-200 inline-block;
+  }
+  
+  /* Accent button - для зелёных кнопок (в корзину, отправить) */
   .btn-accent {
-    @apply bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors;
+    @apply px-6 py-3 bg-gradient-to-r from-accent-500 to-accent-600
+           hover:from-accent-600 hover:to-accent-700
+           text-white font-bold rounded-lg
+           transition-all duration-200 shadow-md hover:shadow-lg
+           inline-block;
   }
-
-  .card {
-    @apply bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow;
+  
+  /* Glassmorphic card */
+  .card-glassmorphism {
+    @apply bg-white/95 backdrop-blur-sm border border-white/20
+           rounded-xl shadow-lg hover:shadow-2xl
+           transition-all duration-300;
   }
-
+  
+  /* Trust badge */
+  .badge-trust {
+    @apply inline-flex items-center gap-1 text-xs font-semibold
+           px-3 py-1 rounded-full border;
+  }
+  
+  /* Badge with green accent */
+  .badge-success {
+    @apply badge-trust bg-green-50 text-green-700 border-green-200;
+  }
+  
+  /* Badge with blue accent */
+  .badge-info {
+    @apply badge-trust bg-blue-50 text-blue-700 border-blue-200;
+  }
+  
+  /* Section title with gradient */
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900;
+    @apply text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900;
+  }
+  
+  /* Card base styles */
+  .card {
+    @apply bg-white border border-gray-100 rounded-lg overflow-hidden 
+           shadow-sm hover:shadow-md transition-shadow;
   }
 }
 
-/* Reset и базовые стили */
-* {
-  @apply box-border;
-}
-
-html {
-  @apply scroll-smooth;
-  font-feature-settings: 'kern' 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  @apply bg-white text-gray-900 font-sans;
-  font-size: 16px;
-  line-height: 1.5;
-  color: rgb(17 24 39); /* gray-900 */
+/* Custom utilities */
+@layer utilities {
+  /* Glass effect */
+  .glass {
+    @apply bg-white/30 backdrop-blur-md border border-white/20;
+  }
+  
+  /* Gradient text */
+  .grad-text-blue {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent;
+  }
+  
+  /* Smooth fade on scroll */
+  .fade-in-on-scroll {
+    @apply opacity-0 animate-fade-in-up;
+  }
 }
 
 /* Заголовки */

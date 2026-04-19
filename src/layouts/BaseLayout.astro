@@ -36,6 +36,24 @@ const organizationSchema = generateOrganizationSchema(baseUrl);
 <!DOCTYPE html>
 <html lang={SITE_CONFIG.language} dir="ltr">
   <head>
+    <!-- Fix CSS and other head resources for GitHub Pages subdirectory -->
+    <script is:inline>
+      window.__baseFixDone = false;
+      function fixHeadResources() {
+        if (window.__baseFixDone) return;
+        window.__baseFixDone = true;
+        const basePath = '/saratovabrosimova';
+        document.querySelectorAll('link[href^="/"], script[src^="/"]').forEach(el => {
+          let attr = el.tagName === 'LINK' ? 'href' : 'src';
+          let url = el.getAttribute(attr);
+          if (url && url.startsWith('/') && !url.startsWith('//') && !url.startsWith('http') && !url.startsWith(basePath)) {
+            el.setAttribute(attr, basePath + url);
+          }
+        });
+      }
+      fixHeadResources();
+    </script>
+    
     <!-- Charset и основные мета-теги -->
     <meta charset={SITE_CONFIG.charset} />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -119,6 +137,59 @@ const organizationSchema = generateOrganizationSchema(baseUrl);
     <script define:vars={{ baseUrl }}>
       // Инициализация глобальных утилит
       window.__SARPRO_BASE_URL__ = baseUrl;
+      
+      // Scroll-triggered анимации с IntersectionObserver
+      (function() {
+        // Если браузер поддерживает IntersectionObserver
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                // Добавляем класс для начала анимации
+                entry.target.style.animationPlayState = 'running';
+                observer.unobserve(entry.target);
+              }
+            });
+          }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+          });
+          
+          // Находим все элементы с анимацией
+          const animatedElements = document.querySelectorAll('[class*="animate-fade-in"]');
+          animatedElements.forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+          });
+        }
+      })();
+    </script>
+    
+    <!-- Fix relative links for GitHub Pages subdirectory -->
+    <script is:inline>
+      function fixLinks() {
+        const basePath = '/saratovabrosimova';
+        // Fix href links
+        document.querySelectorAll('a[href]').forEach(link => {
+          let href = link.getAttribute('href');
+          if (href && href.startsWith('/') && !href.startsWith('//') && 
+              !href.startsWith('http') && !href.startsWith('mailto') && 
+              !href.startsWith('tel') && href !== basePath && !href.startsWith(basePath)) {
+            link.setAttribute('href', basePath + href);
+          }
+        });
+        // Fix src attributes for images and other resources
+        document.querySelectorAll('img[src], link[href^="/"], script[src^="/"]').forEach(el => {
+          let attr = el.tagName === 'LINK' ? 'href' : (el.tagName === 'SCRIPT' ? 'src' : 'src');
+          let src = el.getAttribute(attr);
+          if (src && src.startsWith('/') && !src.startsWith('//') && !src.startsWith('http') && !src.startsWith(basePath)) {
+            el.setAttribute(attr, basePath + src);
+          }
+        });
+      }
+      // Run immediately and on load
+      fixLinks();
+      document.addEventListener('DOMContentLoaded', fixLinks);
     </script>
   </body>
 </html>

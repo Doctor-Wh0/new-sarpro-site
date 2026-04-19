@@ -12,63 +12,82 @@ interface Props {
 const { product } = Astro.props;
 ---
 
-<div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+<div class="group bg-white border border-gray-100 rounded-xl overflow-hidden 
+            hover:border-blue-200 hover:shadow-xl transition-all duration-300
+            hover:bg-gradient-to-br hover:from-white hover:to-blue-50/50
+            opacity-0 animate-fade-in-up" 
+     style="animation-fill-mode: forwards;">
+  
   <!-- Изображение -->
-  <div class="relative w-full h-48 md:h-56 bg-gray-100 overflow-hidden">
+  <div class="relative w-full h-56 md:h-64 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
     <img 
       src={product.image} 
       alt={product.name}
-      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
       loading="lazy"
     />
-    <div class="absolute top-3 right-3 bg-accent-light text-white px-3 py-1 rounded text-xs font-semibold">
-      {product.availability === 'В наличии' ? '✓ В наличии' : product.availability}
+    
+    <!-- Overlay при наведении с информацией -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div class="absolute bottom-0 left-0 right-0 p-4">
+        <p class="text-white text-sm font-semibold">
+          ✓ Гарантия {product.warranty}
+        </p>
+      </div>
+    </div>
+    
+    <!-- Статус -->
+    <div class={`absolute top-3 right-3 px-4 py-2 rounded-full text-xs font-bold transition-all
+      ${product.availability === 'В наличии' 
+        ? 'bg-green-500/90 text-white hover:bg-green-600' 
+        : 'bg-amber-500/90 text-white hover:bg-amber-600'}`}>
+      {product.availability === 'В наличии' ? '✓ Есть' : '⏳ Заказ'}
     </div>
   </div>
 
   <!-- Содержимое -->
-  <div class="p-4">
-    <!-- Производитель -->
-    <p class="text-xs text-gray-500 uppercase tracking-wide mb-2">
-      {product.manufacturer}
-    </p>
+  <div class="p-6">
+    <!-- Производитель + Страна -->
+    <div class="flex items-center justify-between mb-3">
+      <p class="text-xs font-bold text-gray-600 uppercase tracking-wider">
+        {product.manufacturer}
+      </p>
+      <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full border border-gray-200">
+        {product.countryOfOrigin}
+      </span>
+    </div>
 
-    <!-- Название товара -->
-    <h3 class="font-bold text-base md:text-lg mb-2 line-clamp-2">
-      <a href={`/products/${product.slug}`} class="hover:text-blue-600 transition">
+    <!-- Название -->
+    <h3 class="font-bold text-lg mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+      <a href={`/products/${product.slug}`}>
         {product.name}
       </a>
     </h3>
 
     <!-- Описание -->
-    <p class="text-sm text-gray-600 mb-3 line-clamp-2">
+    <p class="text-sm text-gray-600 mb-4 line-clamp-2">
       {product.description}
     </p>
 
-    <!-- Характеристики -->
-    <div class="flex flex-wrap gap-2 mb-4 text-xs">
-      {product.warranty && (
-        <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded">
-          Гарантия: {product.warranty}
-        </span>
-      )}
-      {product.countryOfOrigin && (
-        <span class="bg-green-50 text-green-700 px-2 py-1 rounded">
-          {product.countryOfOrigin}
-        </span>
-      )}
+    <!-- Trust badges -->
+    <div class="flex flex-wrap gap-2 mb-4">
+      <span class="badge-success">
+        <span>✓</span> В наличии
+      </span>
+      <span class="badge-info">
+        <span>⚡</span> 48ч доставка
+      </span>
     </div>
 
     <!-- Цена и кнопка -->
-    <div class="flex items-center justify-between">
-      <div class="font-bold text-lg">
+    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+      <div class="font-bold text-xl grad-text-blue">
         {formatPrice(product.price)}
       </div>
       <a 
         href={`/products/${product.slug}`}
-        class="bg-green-500 text-white px-4 py-2 rounded font-semibold hover:bg-green-700 transition"
-      >
-        Подробнее →
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-lg">
+        Подробнее
       </a>
     </div>
   </div>
