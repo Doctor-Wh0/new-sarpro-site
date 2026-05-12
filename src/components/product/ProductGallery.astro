@@ -3,6 +3,7 @@
 // Галерея изображений товара
 
 import type { Product } from '@/types';
+import { getImage } from 'astro:assets';
 
 interface Props {
   product: Product;
@@ -12,6 +13,16 @@ const { product } = Astro.props;
 
 // Основное изображение + галерея
 const images = [product.image, ...product.gallery];
+
+// Получаем базовый путь из конфига
+const basePath = import.meta.env.BASE_URL || '/';
+const getImagePath = (path: string) => {
+  // Если путь уже начинается с базового пути, возвращаем как есть
+  if (path.startsWith(basePath)) return path;
+  // Если это абсолютный путь, добавляем базовый путь
+  if (path.startsWith('/')) return basePath.replace(/\/$/, '') + path;
+  return path;
+};
 ---
 
 <div id="product-gallery">
@@ -28,17 +39,48 @@ const images = [product.image, ...product.gallery];
   <!-- Миниатюры -->
   {images.length > 1 && (
     <div class="flex gap-2 overflow-x-auto">
-      {images.map((img, index) => (
-        <button
-          class={`flex-shrink-0 w-20 h-20 rounded-lg border-2 transition ${
-            index === 0 ? 'border-blue-600' : 'border-transparent hover:border-gray-300'
-          }`}
-          onclick={`document.getElementById('gallery-main-image').src = '${img}'`}
-          aria-label={`View image ${index + 1}`}
-        >
-          <img src={img} alt={`${product.name} - изображение ${index + 1}`} class="w-full h-full object-cover rounded" />
-        </button>
-      ))}
+      {images.map((img, index) => {
+        const imagePath = getImagePath(img);
+        return (
+          <button
+            class={`gallery-thumbnail flex-shrink-0 w-20 h-20 rounded-lg border-2 transition ${
+              index === 0 ? 'border-blue-600' : 'border-transparent hover:border-gray-300'
+            }`}
+            data-image={imagePath}
+            data-index={index}
+            aria-label={`View image ${index + 1}`}
+            type="button"
+          >
+            <img src={imagePath} alt={`${product.name} - изображение ${index + 1}`} class="w-full h-full object-cover rounded" />
+          </button>
+        );
+      })}
     </div>
   )}
 </div>
+
+<script>
+  // Обработчик кликов на миниатюры
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryThumbnails = document.querySelectorAll('.gallery-thumbnail');
+    const mainImage = document.getElementById('gallery-main-image');
+    
+    galleryThumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener('click', (e) => {
+        e.preventDefault();
+        const imageUrl = thumbnail.getAttribute('data-image');
+        if (imageUrl && mainImage) {
+          mainImage.src = imageUrl;
+          
+          // Обновляем активную кнопку
+          galleryThumbnails.forEach((btn) => {
+            btn.classList.remove('border-blue-600');
+            btn.classList.add('border-transparent');
+          });
+          thumbnail.classList.remove('border-transparent');
+          thumbnail.classList.add('border-blue-600');
+        }
+      });
+    });
+  });
+</script>

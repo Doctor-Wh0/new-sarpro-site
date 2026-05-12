@@ -19,7 +19,7 @@
       "slug": "sejfy",
       "name": "Сейфы",
       "description": "Надёжные сейфы для хранения ценностей, документов и денежных средств. Все модели сертифицированы согласно российским и международным стандартам.",
-      "image": "/assets/images/category-safes.jpg",
+      "image": "/assets/images/products/valberg-asm-165-t-2.jpg",
       "order": 1
     },
     {
@@ -29,30 +29,6 @@
       "description": "Полный ассортимент пломб: индикаторные, силовые, пластиковые. Средства для опломбирования и защиты от подделок.",
       "image": "/assets/images/category-seals.jpg",
       "order": 2
-    },
-    {
-      "id": "cashing",
-      "slug": "kassovye-apparaty-i-fiskalnoe-oborudovanie",
-      "name": "Кассовые аппараты и ККТ",
-      "description": "Фискальные регистраторы, соответствующие требованиям 54-ФЗ. Оборудование для инкассации и учёта денежных средств.",
-      "image": "/assets/images/category-cashing.jpg",
-      "order": 3
-    },
-    {
-      "id": "bank-equipment",
-      "slug": "bankovskoe-oborudovanie",
-      "name": "Банковское оборудование",
-      "description": "Специализированное оборудование для банков: сейф-пакеты, курьерские пакеты, системы безопасности.",
-      "image": "/assets/images/category-bank.jpg",
-      "order": 4
-    },
-    {
-      "id": "office-furniture",
-      "slug": "ofisnya-mebel",
-      "name": "Офисная мебель",
-      "description": "Металлическая офисная мебель высокого качества: шкафы, стеллажи, подставки для безопасного хранения.",
-      "image": "/assets/images/category-furniture.jpg",
-      "order": 5
     }
   ],
   
@@ -66,15 +42,15 @@
       "longDescription": "VALBERG ASM-120 T — надёжный офисный сейф, предназначенный для хранения важных документов, денежных средств и ценностей. Отличается компактными размерами и максимальной безопасностью. Двухточечный замок обеспечивает надёжную защиту. Изготовлен из высокопрочной стали. Соответствует требованиям ГОСТ 50862-2005 (класс 0).",
       "price": null,
       "currency": "RUB",
-      "availability": "В наличии",
+      "availability": "Под заказ",
       "manufacturer": "VALBERG",
       "countryOfOrigin": "Россия",
       "warranty": "2 года",
       "specs": {
-        "width": "1200 мм",
-        "depth": "550 мм",
-        "height": "390 мм",
-        "weight": "150 кг",
+        "width": "550 мм",
+        "depth": "390 мм",
+        "height": "1200 мм",
+        "weight": "93 кг",
         "material": "Высокопрочная сталь",
         "lockType": "Мультилок трёхточечный",
         "certification": "ГОСТ 50862-2005, класс 0",
@@ -83,7 +59,6 @@
       },
       "image": "/assets/images/products/valberg-asm-120-t.jpg",
       "gallery": [
-        "/assets/images/products/valberg-asm-120-t-1.jpg",
         "/assets/images/products/valberg-asm-120-t-2.jpg"
       ],
       "certificates": [
@@ -103,22 +78,23 @@
       "longDescription": "VALBERG ASM-90 T — компактный офисный сейф, идеален для небольших офисов, кабинетов директора и муниципальных учреждений. Обеспечивает надёжное хранение документов и ценностей. Оснащён трёхточечным замком с защитой от взлома. Лёгкие габариты при достаточной вместимости делают его универсальным решением.",
       "price": null,
       "currency": "RUB",
-      "availability": "В наличии",
+      "availability": "Под заказ",
       "manufacturer": "VALBERG",
       "countryOfOrigin": "Россия",
       "warranty": "2 года",
       "specs": {
-        "width": "900 мм",
-        "depth": "450 мм",
-        "height": "360 мм",
-        "weight": "120 кг",
+        "width": "440 мм",
+        "depth": "355 мм",
+        "height": "900 мм",
+        "weight": "51 кг",
         "material": "Высокопрочная сталь",
         "lockType": "Мультилок трёхточечный",
         "certification": "ГОСТ 50862-2005, класс 0"
       },
       "image": "/assets/images/products/valberg-asm-90-t.jpg",
       "gallery": [
-        "/assets/images/products/valberg-asm-90-t-1.jpg"
+        "/assets/images/products/valberg-asm-90-t-1.jpg",
+        "/assets/images/products/valberg-asm-90-t-2.jpg"
       ],
       "certificates": [
         {
@@ -137,21 +113,24 @@
       "longDescription": "VALBERG ASM-165 T — большой офисный сейф с максимальным объёмом хранения. Предназначен для банков, крупных компаний и учреждений, требующих вместительного защищённого хранилища. Изготовлен из толстостенной стали. Отличается повышенной взломостойкостью и надёжностью.",
       "price": null,
       "currency": "RUB",
-      "availability": "В наличии",
+      "availability": "Под заказ",
       "manufacturer": "VALBERG",
       "countryOfOrigin": "Россия",
       "warranty": "2 года",
       "specs": {
-        "width": "1650 мм",
-        "depth": "550 мм",
-        "height": "390 мм",
-        "weight": "200 кг",
+        "width": "600 мм",
+        "depth": "460 мм",
+        "height": "1650 мм",
+        "weight": "157 кг",
         "material": "Высокопрочная сталь",
-        "lockType": "Мультилок трёхточечный",
+        "lockType": "Ключевой",
         "certification": "ГОСТ 50862-2005, класс 1"
       },
       "image": "/assets/images/products/valberg-asm-165-t.jpg",
-      "gallery": [],
+      "gallery": [
+        "/assets/images/products/valberg-asm-165-t-1.jpg",
+        "/assets/images/products/valberg-asm-165-t-2.jpg"
+      ],
       "certificates": [
         {
           "name": "ГОСТ 50862-2005",
@@ -183,7 +162,9 @@
         "certification": "ГОСТ 50862-2005, класс 0"
       },
       "image": "/assets/images/products/fire-safe-3.jpg",
-      "gallery": [],
+      "gallery": [
+        "/assets/images/products/fire-safe-3-2.jpg"
+      ],
       "certificates": [
         {
           "name": "ГОСТ 50862-2005",
@@ -215,7 +196,9 @@
         "certification": "ГОСТ 50862-2005, класс II"
       },
       "image": "/assets/images/products/safe-class-2.jpg",
-      "gallery": [],
+      "gallery": [
+        "/assets/images/products/safe-class-2-2.jpg"
+      ],
       "certificates": [
         {
           "name": "ГОСТ 50862-2005",
@@ -267,7 +250,7 @@
         "number": "Индивидуальная нумерация",
         "color": "Красный / жёлтый"
       },
-      "image": "/assets/images/products/seal-rope.jpg",
+      "image": "/assets/images/products/seal-plomb-tros.jpg",
       "gallery": [],
       "certificates": [],
       "orderIndex": 2
@@ -315,90 +298,10 @@
         "weight": "150 г",
         "compatibility": "Со всеми типами пломб"
       },
-      "image": "/assets/images/products/minisil-device.jpg",
+      "image": "/assets/images/products/minisil-device.png",
       "gallery": [],
       "certificates": [],
       "orderIndex": 4
-    },
-    {
-      "id": "kkt-fiscal-register-1",
-      "categoryId": "cashing",
-      "name": "Фискальный регистратор PRRO-01",
-      "slug": "fiscal-register-prro-01",
-      "description": "Фискальный регистратор, соответствующий требованиям ФЗ-54",
-      "longDescription": "Фискальный регистратор PRRO-01 обеспечивает полное соответствие требованиям закона ФЗ-54 о кассовых аппаратах и ККТ. Построен на современной платформе, интегрируется с системами бухучёта и онлайн-касс. Поддерживает передачу данных в ФНС в реальном времени.",
-      "price": null,
-      "currency": "RUB",
-      "availability": "По запросу",
-      "manufacturer": "SARPRO",
-      "countryOfOrigin": "Россия",
-      "warranty": "Консультация по законодательству",
-      "specs": {
-        "compliance": "ФЗ-54 (Federal Law 54)",
-        "interface": "Bluetooth, USB, Ethernet",
-        "display": "7\" LCD дисплей",
-        "paperWidth": "80 мм",
-        "printSpeed": "150 мм/сек"
-      },
-      "image": "/assets/images/products/fiscal-register.jpg",
-      "gallery": [],
-      "certificates": [
-        {
-          "name": "Реестр ФНС",
-          "url": "/assets/certificates/fns-registry.pdf"
-        }
-      ],
-      "orderIndex": 1
-    },
-    {
-      "id": "bank-safe-bag",
-      "categoryId": "bank-equipment",
-      "name": "Сейф-пакет курьерский",
-      "slug": "bank-safe-bag",
-      "description": "Защищённый пакет для транспортировки денежных средств",
-      "longDescription": "Курьерский сейф-пакет обеспечивает безопасную доставку денежных средств и документов. Изготовлен из специальной ткани с металлической сеткой, обеспечивающей видимость содержимого и защиту от повреждений. Оснащён индикаторной системой вскрытия и номерной пломбировкой.",
-      "price": null,
-      "currency": "RUB",
-      "availability": "В наличии",
-      "manufacturer": "SARPRO",
-      "countryOfOrigin": "Россия",
-      "warranty": "1 год",
-      "specs": {
-        "material": "Нейлон + метал. сетка",
-        "size": "240 x 340 мм",
-        "weight": "500 г",
-        "indicator": "Цветной индикатор вскрытия"
-      },
-      "image": "/assets/images/products/safe-courier-bag.jpg",
-      "gallery": [],
-      "certificates": [],
-      "orderIndex": 1
-    },
-    {
-      "id": "metal-cabinet-3doors",
-      "categoryId": "office-furniture",
-      "name": "Металлический шкаф 3-дверный",
-      "slug": "metal-cabinet-3doors",
-      "description": "Прочный металлический шкаф для офиса",
-      "longDescription": "Трёхдверный металлический шкаф высокой прочности для офисного хранения. Изготовлен из листовой стали с порошковым покрытием, устойчив к коррозии и механическим повреждениям. Идеален для архивов, складов и офисных помещений.",
-      "price": null,
-      "currency": "RUB",
-      "availability": "В наличии",
-      "manufacturer": "SARPRO",
-      "countryOfOrigin": "Россия",
-      "warranty": "2 года",
-      "specs": {
-        "width": "1000 мм",
-        "depth": "400 мм",
-        "height": "1800 мм",
-        "weight": "80 кг",
-        "doors": "3",
-        "locks": "Кодовые замки на каждой двери"
-      },
-      "image": "/assets/images/products/metal-cabinet.jpg",
-      "gallery": [],
-      "certificates": [],
-      "orderIndex": 1
     }
   ]
 }
