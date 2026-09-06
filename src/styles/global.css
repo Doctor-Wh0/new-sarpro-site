@@ -20,8 +20,8 @@
 @layer components {
   /* Primary button - для основных CTA */
   .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 
-           hover:from-primary-700 hover:to-primary-800 
+    @apply px-6 py-3 bg-primary-600
+           hover:bg-white hover:text-primary-700
            text-white font-bold rounded-lg
            transition-all duration-200 shadow-md hover:shadow-lg
            inline-block;
@@ -51,6 +51,25 @@
            transition-all duration-300;
   }
   
+  /* CTA button "Оставить заявку" — жёлтый */
+  .btn-cta-yellow {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #fcd34d;
+    color: #1e3a8a;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .btn-cta-yellow:hover {
+    background-color: #fde68a;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+  }
+
   /* Trust badge */
   .badge-trust {
     @apply inline-flex items-center gap-1 text-xs font-semibold
@@ -140,10 +159,6 @@
   a {
     @apply text-primary-600 hover:text-primary-700 transition-colors duration-200;
     text-decoration: none;
-  }
-
-  a:visited {
-    @apply text-primary-800;
   }
 
   /* SVG иконки в ссылках не наследуют цвет текста */
