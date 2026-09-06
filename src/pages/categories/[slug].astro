@@ -25,7 +25,7 @@ interface Props {
 
 const { category } = Astro.props;
 const products = await getProductsByCategory(category.id);
-const schema = generateCategorySchema(category, products, import.meta.env.SITE || 'https://sarpro.ru');
+const schema = generateCategorySchema(category, products, import.meta.env.SITE || 'https://saratov-pro.github.io');
 ---
 
 <BaseLayout 

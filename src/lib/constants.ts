@@ -1,5 +1,5 @@
 export const COMPANY_INFO = {
-  name: 'ООО "Сарпро"',
+  name: 'ИП Абросимова Светлана Алексеевна',
   nameRu: 'Сарпро',
   shortName: 'SARPRO',
   inn: '6401055170',

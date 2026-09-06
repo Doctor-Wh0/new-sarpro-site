@@ -5,22 +5,8 @@ import { COMPANY_INFO } from '@/lib/constants';
 ---
 
 <div>
-  <h4 class="font-bold text-sm mb-4 uppercase tracking-wide">Реквизиты</h4>
+  <h4 class="font-bold text-sm mb-4 uppercase tracking-wide text-white">Контакты</h4>
   <ul class="space-y-2 text-sm text-gray-300">
-    <li>
-      <strong>Компания:</strong><br/>
-      {COMPANY_INFO.name}
-    </li>
-    <li>
-      <strong>ИНН:</strong> {COMPANY_INFO.inn}
-    </li>
-    <li>
-      <strong>ОГРН:</strong> {COMPANY_INFO.ogrn}
-    </li>
-    <li>
-      <strong>Адрес:</strong><br/>
-      {COMPANY_INFO.legalAddress}
-    </li>
     <li>
       <strong>Email:</strong><br/>
       <a href={`mailto:${COMPANY_INFO.email}`} class="text-green-500 hover:underline">

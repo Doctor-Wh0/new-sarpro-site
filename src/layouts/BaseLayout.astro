@@ -29,48 +29,14 @@ const {
   ogType = 'website',
 } = Astro.props;
 
-const baseUrl = import.meta.env.SITE || 'https://sarpro.ru';
+const baseUrl = import.meta.env.SITE || 'https://saratov-pro.github.io';
+const absoluteImage = image.startsWith('http') ? image : `${baseUrl}${image.startsWith('/') ? '' : '/'}${image}`;
 const organizationSchema = generateOrganizationSchema(baseUrl);
 ---
 
 <!DOCTYPE html>
 <html lang={SITE_CONFIG.language} dir="ltr">
   <head>
-    <!-- Fix CSS and other head resources for GitHub Pages subdirectory -->
-    <script is:inline>
-      window.__baseFixDone = false;
-      const basePath = '/saratovabrosimova';
-      
-      function fixHeadResources() {
-        if (window.__baseFixDone) return;
-        const allFixed = document.querySelectorAll('link[href^="/"], script[src^="/"]').length === 0;
-        if (allFixed) return;
-        
-        document.querySelectorAll('link[href^="/"], script[src^="/"]').forEach(el => {
-          let attr = el.tagName === 'LINK' ? 'href' : 'src';
-          let url = el.getAttribute(attr);
-          if (url && url.startsWith('/') && !url.startsWith('//') && !url.startsWith('http') && !url.startsWith(basePath)) {
-            el.setAttribute(attr, basePath + url);
-          }
-        });
-        window.__baseFixDone = true;
-      }
-      
-      // Fix existing resources immediately
-      fixHeadResources();
-      
-      // Watch for new resources being added
-      const observer = new MutationObserver((mutations) => {
-        for (let mutation of mutations) {
-          if (mutation.addedNodes.length > 0) {
-            fixHeadResources();
-          }
-        }
-      });
-      
-      observer.observe(document.head, { childList: true });
-    </script>
-    
     <!-- Charset и основные мета-теги -->
     <meta charset={SITE_CONFIG.charset} />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -85,7 +51,7 @@ const organizationSchema = generateOrganizationSchema(baseUrl);
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={absoluteImage} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="SARPRO" />
@@ -95,7 +61,7 @@ const organizationSchema = generateOrganizationSchema(baseUrl);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={absoluteImage} />
     
     <!-- Canonical URL -->
     <link rel="canonical" href={canonical} />
@@ -108,14 +74,8 @@ const organizationSchema = generateOrganizationSchema(baseUrl);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     
-    <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="SARPRO - новости" href="/rss.xml" />
-    
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-    
-    <!-- Robots -->
-    <link rel="robots" href="/robots.txt" />
     
     <!-- Manifest для PWA (опционально) -->
     <link rel="manifest" href="/manifest.json" />
@@ -142,6 +102,8 @@ const organizationSchema = generateOrganizationSchema(baseUrl);
   </head>
   
   <body>
+    <a href="#main-content" class="skip-link">Пропустить к основному содержимому</a>
+
     <Header />
     
     <main id="main-content">
@@ -182,32 +144,7 @@ const organizationSchema = generateOrganizationSchema(baseUrl);
       })();
     </script>
     
-    <!-- Fix relative links for GitHub Pages subdirectory -->
-    <script is:inline>
-      function fixLinks() {
-        const basePath = '/saratovabrosimova';
-        // Fix href links
-        document.querySelectorAll('a[href]').forEach(link => {
-          let href = link.getAttribute('href');
-          if (href && href.startsWith('/') && !href.startsWith('//') && 
-              !href.startsWith('http') && !href.startsWith('mailto') && 
-              !href.startsWith('tel') && href !== basePath && !href.startsWith(basePath)) {
-            link.setAttribute('href', basePath + href);
-          }
-        });
-        // Fix src attributes for images and other resources
-        document.querySelectorAll('img[src], link[href^="/"], script[src^="/"]').forEach(el => {
-          let attr = el.tagName === 'LINK' ? 'href' : (el.tagName === 'SCRIPT' ? 'src' : 'src');
-          let src = el.getAttribute(attr);
-          if (src && src.startsWith('/') && !src.startsWith('//') && !src.startsWith('http') && !src.startsWith(basePath)) {
-            el.setAttribute(attr, basePath + src);
-          }
-        });
-      }
-      // Run immediately and on load
-      fixLinks();
-      document.addEventListener('DOMContentLoaded', fixLinks);
-    </script>
+
   </body>
 </html>
 
@@ -215,6 +152,24 @@ const organizationSchema = generateOrganizationSchema(baseUrl);
   /* Дополнительные глобальные стили */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Skip link для клавиатурной навигации */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.75rem 1.5rem;
+    background-color: rgb(10, 37, 64);
+    color: white;
+    text-decoration: none;
+    border-radius: 0 0 0.5rem 0.5rem;
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus {
+    top: 0;
   }
   
   @media (prefers-reduced-motion: reduce) {

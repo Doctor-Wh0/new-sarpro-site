@@ -70,22 +70,6 @@ export function formatPhone(phone: string): string {
 }
 
 /**
- * Валидирует email
- */
-export function isValidEmail(email: string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
-/**
- * Валидирует русский телефон
- */
-export function isValidPhone(phone: string): boolean {
-  const phoneRegex = /^[+]?7\d{10}$/;
-  return phoneRegex.test(phone.replace(/\D/g, ''));
-}
-
-/**
  * Генерирует мета-описание
  */
 export function truncateDescription(text: string, maxLength: number = 160): string {

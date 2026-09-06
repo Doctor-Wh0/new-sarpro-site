@@ -1,0 +1,12 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "indexing": {
+    "provider": "openai-compatible",
+    "model": "bge-m3:latest",
+    "enabled": true,
+    "openai-compatible": {
+      "baseUrl": "http://127.0.0.1:3000/api",
+      "apiKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNjYzAwZDcyLWFmYmYtNDdjZS04YjBmLTkwOTM2Njg2OWMwMSIsImV4cCI6MTc5MDE5NDYwNywianRpIjoiZmU1Mjg1NDQtOWNjYi00NTg3LTg3Y2MtOTVhZmNmMjFmZTllIiwiaWF0IjoxNzg3Nzc1NDA3fQ.oZoP6nwRKBOOz5On523409p896dhd_DgN6hAQjP0RAg"
+    }
+  }
+}

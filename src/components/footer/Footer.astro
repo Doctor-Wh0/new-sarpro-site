@@ -32,7 +32,7 @@ const footerLinks = {
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
       <!-- О компании -->
       <div>
-        <h3 class="font-bold text-lg mb-4">SARPRO</h3>
+        <h3 class="font-bold text-lg mb-4 text-white">SARPRO</h3>
         <p class="text-sm text-gray-300 mb-4">
           Официальный поставщик сейфов, пломб и оборудования для безопасности компаний в России.
         </p>
@@ -55,7 +55,7 @@ const footerLinks = {
       <!-- Ссылки по категориям -->
       {Object.entries(footerLinks).map(([title, links]) => (
         <div>
-          <h4 class="font-bold text-sm mb-4 uppercase tracking-wide">{title}</h4>
+          <h4 class="font-bold text-sm mb-4 uppercase tracking-wide text-white">{title}</h4>
           <ul class="space-y-2">
             {links.map((link) => (
               <li>

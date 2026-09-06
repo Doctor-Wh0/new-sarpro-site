@@ -55,4 +55,20 @@ const navItems = [
   header {
     background: linear-gradient(135deg, #0a2540 0%, #0d2e4f 100%);
   }
+
+  /* Глобальный стиль a (text-blue-600) делает ссылки невидимыми на тёмном фоне — переопределяем */
+  header nav a,
+  header a[href^="tel:"] {
+    color: #ffffff;
+    transition: color 0.2s ease;
+  }
+
+  header nav a:hover,
+  header a[href^="tel:"]:hover {
+    color: #bfdbfe;
+  }
+
+  header > .container > div > a {
+    color: #ffffff;
+  }
 </style>

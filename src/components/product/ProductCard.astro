@@ -12,11 +12,11 @@ interface Props {
 const { product } = Astro.props;
 ---
 
-<div class="group bg-white border border-gray-100 rounded-xl overflow-hidden 
-            hover:border-blue-200 hover:shadow-xl transition-all duration-300
+<div class="group bg-white border border-gray-100 rounded-xl overflow-hidden
+            hover:border-blue-200 hover:shadow-xl transition-[border-color,box-shadow,background-image] duration-300
             hover:bg-gradient-to-br hover:from-white hover:to-blue-50/50
-            opacity-0 animate-fade-in-up" 
-     style="animation-fill-mode: forwards;">
+            animate-fade-in-up"
+     style="animation-fill-mode: both;">
   
   <!-- Изображение -->
   <div class="relative w-full h-56 md:h-64 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
@@ -28,7 +28,7 @@ const { product } = Astro.props;
     />
     
     <!-- Overlay при наведении с информацией -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <div class="warranty-overlay absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300">
       <div class="absolute bottom-0 left-0 right-0 p-4">
         <p class="text-white text-sm font-semibold">
           ✓ Гарантия {product.warranty}
@@ -71,12 +71,14 @@ const { product } = Astro.props;
 
     <!-- Trust badges -->
     <div class="flex flex-wrap gap-2 mb-4">
-      <span class="badge-success">
-        <span>✓</span> В наличии
-      </span>
-      <span class="badge-info">
+      {product.availability === 'В наличии' && (
+        <span class="badge-success">
+          <span>✓</span> В наличии
+        </span>
+      )}
+      <!-- <span class="badge-info">
         <span>⚡</span> 48ч доставка
-      </span>
+      </span> -->
     </div>
 
     <!-- Цена и кнопка -->
@@ -84,7 +86,7 @@ const { product } = Astro.props;
       <div class="font-bold text-xl grad-text-blue">
         {formatPrice(product.price)}
       </div>
-      <a 
+      <a
         href={`/products/${product.slug}`}
         class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-lg">
         Подробнее
@@ -92,3 +94,12 @@ const { product } = Astro.props;
     </div>
   </div>
 </div>
+
+<style is:global>
+  /* На устройствах без ховера (тач) оверлей с гарантией всегда виден */
+  @media (hover: none) {
+    .warranty-overlay {
+      opacity: 1;
+    }
+  }
+</style>

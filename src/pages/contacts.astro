@@ -45,6 +45,14 @@ import { COMPANY_INFO } from '@/lib/constants';
               </div>
             </div>
 
+            <!-- Компания -->
+            <div>
+              <h3 class="font-bold text-lg mb-3">Компания</h3>
+              <p class="text-gray-700">
+                {COMPANY_INFO.name}
+              </p>
+            </div>
+
             <!-- Email -->
             <div>
               <h3 class="font-bold text-lg mb-3">Email</h3>
@@ -53,31 +61,12 @@ import { COMPANY_INFO } from '@/lib/constants';
               </a>
             </div>
 
-            <!-- Адрес -->
-            <div>
-              <h3 class="font-bold text-lg mb-3">Юридический адрес</h3>
-              <p class="text-gray-700">
-                {COMPANY_INFO.legalAddress}
-              </p>
-            </div>
-
-            <!-- Реквизиты -->
-            <div>
-              <h3 class="font-bold text-lg mb-3">Реквизиты</h3>
-              <ul class="space-y-1 text-gray-700 text-sm">
-                <li><strong>Название:</strong> {COMPANY_INFO.name}</li>
-                <li><strong>ИНН:</strong> {COMPANY_INFO.inn}</li>
-                <li><strong>ОГРН:</strong> {COMPANY_INFO.ogrn}</li>
-              </ul>
-            </div>
-
             <!-- Часы работы -->
             <div>
               <h3 class="font-bold text-lg mb-3">Часы работы</h3>
               <p class="text-gray-700">
                 Пн—Пт: 8:00—19:00<br/>
-                Сб—Вс: 9:00—17:00<br/>
-                Консультация 24/7 по телефону
+                Сб—Вс: 9:00—17:00
               </p>
             </div>
           </div>

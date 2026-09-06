@@ -5,11 +5,8 @@ export default defineConfig({
   // Полностью статический сайт (SSG)
   output: 'static',
   
-  // GitHub Pages URL
-  site: 'https://saratov-pro.github.io/saratovabrosimova',
-  
-  // Base path для GitHub Pages - Астро будет генерировать пути с этим префиксом
-  base: '/saratovabrosimova/',
+  // GitHub Pages URL (корневой домен user site)
+  site: 'https://saratov-pro.github.io',
   
   // Интеграции
   integrations: [tailwind()],
@@ -18,33 +15,11 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'never'
   },
-  vite: {
-    ssr: {
-      noExternal: []
-    }
-  },
-  
-  // Динамические раауты
-  dynamic: 'force-static',
-  
-  // Оптимизация изображений
-  image: {
-    remotePatterns: [
-      { protocol: "https" },
-      { protocol: "http" }
-    ]
-  },
-  
+
   // i18n (если понадобится позже)
   i18n: {
     defaultLocale: 'ru',
     locales: ['ru']
-  },
-  
-  // Оптимизация сборки
-  build: {
-    format: 'file',
-    inlineStylesheets: 'never'
   },
   
   // Markdown настройки

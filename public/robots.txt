@@ -2,6 +2,7 @@ User-Agent: *
 Disallow: /admin/
 Disallow: /private/
 Disallow: /*.json
+Allow: /manifest.json
 Disallow: /api/
 Disallow: /cgi-bin/
 Disallow: /*?utm_source=
@@ -19,7 +20,7 @@ Allow: /delivery
 Allow: /warranty
 
 # Sitemap
-Sitemap: https://sarpro.ru/sitemap.xml
+Sitemap: https://saratov-pro.github.io/sitemap.xml
 
 # Crawl delay
 Crawl-delay: 1

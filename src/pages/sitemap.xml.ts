@@ -4,7 +4,7 @@ import type { APIRoute } from 'astro';
 import { getAllProducts, getAllCategories } from '@/lib/utils';
 
 export const GET: APIRoute = async () => {
-  const baseUrl = import.meta.env.SITE || 'https://sarpro.ru';
+  const baseUrl = import.meta.env.SITE || 'https://saratov-pro.github.io';
   
   const products = await getAllProducts();
   const categories = await getAllCategories();

@@ -25,6 +25,7 @@
            text-white font-bold rounded-lg
            transition-all duration-200 shadow-md hover:shadow-lg
            inline-block;
+    color: #ffffff;
   }
   
   /* Secondary button - для альтернативных действий */
@@ -94,76 +95,100 @@
   .fade-in-on-scroll {
     @apply opacity-0 animate-fade-in-up;
   }
+
+  /* Fade in up animation */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
-/* Заголовки */
-h1, h2, h3, h4, h5, h6 {
-  @apply font-bold text-gray-900;
-  line-height: 1.2;
-  margin-top: 0;
-}
+/* Заголовки, параграфы, ссылки, формы — в @layer base,
+   чтобы утилиты Tailwind могли переопределять эти стили */
+@layer base {
+  /* Заголовки */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-gray-900;
+    line-height: 1.2;
+    margin-top: 0;
+  }
 
-h1 { @apply text-4xl md:text-5xl; margin-bottom: 24px; }
-h2 { @apply text-3xl md:text-4xl; margin-bottom: 20px; }
-h3 { @apply text-2xl md:text-3xl; margin-bottom: 16px; }
-h4 { @apply text-xl md:text-2xl; margin-bottom: 12px; }
-h5 { @apply text-lg md:text-xl; margin-bottom: 8px; }
-h6 { @apply text-base md:text-lg; margin-bottom: 8px; }
+  h1 { @apply text-4xl md:text-5xl; margin-bottom: 24px; }
+  h2 { @apply text-3xl md:text-4xl; margin-bottom: 20px; }
+  h3 { @apply text-2xl md:text-3xl; margin-bottom: 16px; }
+  h4 { @apply text-xl md:text-2xl; margin-bottom: 12px; }
+  h5 { @apply text-lg md:text-xl; margin-bottom: 8px; }
+  h6 { @apply text-base md:text-lg; margin-bottom: 8px; }
 
-/* Параграфы */
-p {
-  @apply mb-4;
-  line-height: 1.6;
-}
+  /* Параграфы */
+  p {
+    @apply mb-4;
+    line-height: 1.6;
+  }
 
-p:last-child {
-  @apply mb-0;
-}
+  p:last-child {
+    @apply mb-0;
+  }
 
-/* Ссылки */
-a {
-  @apply text-blue-600 hover:text-blue-700 transition-colors duration-200;
-  text-decoration: none;
-}
+  /* Ссылки */
+  a {
+    @apply text-blue-600 hover:text-blue-700 transition-colors duration-200;
+    text-decoration: none;
+  }
 
-a:visited {
-  @apply text-blue-800;
-}
+  a:visited {
+    @apply text-blue-800;
+  }
 
-/* SVG иконки в ссылках не наследуют цвет текста */
-a svg {
-  color: inherit;
-}
+  /* SVG иконки в ссылках не наследуют цвет текста */
+  a svg {
+    color: inherit;
+  }
 
-/* Кнопки */
-button {
-  @apply cursor-pointer;
-}
+  /* Кнопки */
+  button {
+    @apply cursor-pointer;
+  }
 
-/* Формы */
-input, textarea, select {
-  @apply w-full px-4 py-2 border border-gray-300 rounded-lg;
-  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-  @apply transition-colors duration-200;
-  font-family: inherit;
-}
+  /* Формы */
+  input, textarea, select {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    @apply transition-colors duration-200;
+    font-family: inherit;
+  }
 
-textarea {
-  @apply resize-none;
-}
+  textarea {
+    @apply resize-y;
+  }
 
-/* Таблицы */
-table {
-  @apply w-full border-collapse;
-  margin: 20px 0;
-}
+  /* Таблицы */
+  table {
+    @apply w-full border-collapse;
+    margin: 20px 0;
+  }
 
-th, td {
-  @apply px-4 py-3 text-left border-b border-gray-200;
-}
+  th, td {
+    @apply px-4 py-3 text-left border-b border-gray-200;
+  }
 
-th {
-  @apply bg-gray-50 font-bold;
+  th {
+    @apply bg-gray-50 font-bold;
+  }
+
+  /* SVG иконки */
+  svg {
+    width: auto;
+    height: auto;
+    display: inline;
+    vertical-align: middle;
+  }
 }
 
 /* Утилиты */
@@ -209,14 +234,6 @@ th {
   a {
     @apply no-underline;
   }
-}
-
-/* SVG иконки */
-svg {
-  width: auto;
-  height: auto;
-  display: inline;
-  vertical-align: middle;
 }
 
 /* Социальные иконки в футере */

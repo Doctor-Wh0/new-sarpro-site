@@ -85,12 +85,12 @@ export function generateOrganizationSchema(baseUrl: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'ООО "Сарпро"',
+    name: 'ИП Абросимова Светлана Алексеевна',
     alternateName: 'SARPRO',
     description: 'Официальный поставщик сейфов, пломб и оборудования для безопасности',
     url: baseUrl,
-    logo: `${baseUrl}/assets/logos/logo.svg`,
-    image: `${baseUrl}/assets/images/hero.jpg`,
+    logo: `${baseUrl}/assets/logos/logo.jpg`,
+    image: `${baseUrl}/assets/images/og-default.jpg`,
     telephone: '+7-905-386-0870',
     email: 'info@sarpro.ru',
     address: {

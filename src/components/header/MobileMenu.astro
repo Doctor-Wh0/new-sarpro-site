@@ -14,11 +14,18 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<div id="mobile-menu-button" class="cursor-pointer w-10 h-10 flex flex-col justify-center items-center gap-1.5">
+<button
+  id="mobile-menu-button"
+  type="button"
+  class="cursor-pointer w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-700"
+  aria-label="Открыть меню"
+  aria-expanded="false"
+  aria-controls="mobile-menu-overlay"
+>
   <span class="w-6 h-0.5 bg-white rounded transition-all"></span>
   <span class="w-6 h-0.5 bg-white rounded transition-all"></span>
   <span class="w-6 h-0.5 bg-white rounded transition-all"></span>
-</div>
+</button>
 
 <nav 
   id="mobile-menu-overlay" 
@@ -42,25 +49,79 @@ const { items } = Astro.props;
   </div>
 </nav>
 
+<style>
+  /* Глобальный стиль a (text-blue-600) делает ссылки невидимыми на тёмном фоне — переопределяем */
+  #mobile-menu-panel a {
+    color: #ffffff;
+    transition: color 0.2s ease;
+  }
+
+  #mobile-menu-panel a:hover {
+    color: #bfdbfe;
+  }
+</style>
+
 <script>
   // Мобильное меню
   const button = document.getElementById('mobile-menu-button');
   const overlay = document.getElementById('mobile-menu-overlay');
   const links = overlay?.querySelectorAll('a');
 
+  function isOpen() {
+    return overlay && !overlay.classList.contains('hidden');
+  }
+
+  function setOpen(open: boolean) {
+    if (!overlay) return;
+    overlay.classList.toggle('hidden', !open);
+    button?.setAttribute('aria-expanded', String(open));
+    button?.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    if (open) {
+      const firstLink = overlay.querySelector('a');
+      (firstLink as HTMLElement | null)?.focus();
+    } else {
+      button?.focus();
+    }
+  }
+
   button?.addEventListener('click', () => {
-    overlay?.classList.toggle('hidden');
+    setOpen(!isOpen());
   });
 
   overlay?.addEventListener('click', (e) => {
     if (e.target === overlay) {
-      overlay.classList.add('hidden');
+      setOpen(false);
     }
   });
 
   links?.forEach(link => {
     link.addEventListener('click', () => {
-      overlay?.classList.add('hidden');
+      setOpen(false);
     });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!isOpen()) return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      setOpen(false);
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusables = [button, ...(overlay?.querySelectorAll<HTMLElement>('a, button') ?? [])];
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (!first || !last) return;
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 </script>
