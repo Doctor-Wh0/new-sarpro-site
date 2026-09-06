@@ -17,7 +17,7 @@ const { items } = Astro.props;
 <button
   id="mobile-menu-button"
   type="button"
-  class="cursor-pointer w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-700"
+  class="cursor-pointer w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-700"
   aria-label="Открыть меню"
   aria-expanded="false"
   aria-controls="mobile-menu-overlay"
@@ -34,13 +34,13 @@ const { items } = Astro.props;
 >
   <div 
     id="mobile-menu-panel"
-    class="absolute top-20 left-0 right-0 bg-blue-700 text-white shadow-lg max-h-[calc(100vh-80px)] overflow-y-auto"
+    class="absolute top-20 left-0 right-0 bg-primary-700 text-white shadow-lg max-h-[calc(100vh-80px)] overflow-y-auto"
   >
     <div class="flex flex-col">
       {items.map((item) => (
         <a
           href={item.href}
-          class="px-6 py-4 border-b border-blue-800 hover:bg-blue-800 transition-colors"
+          class="px-6 py-4 border-b border-primary-800 hover:bg-primary-800 transition-colors"
         >
           {item.label}
         </a>
@@ -50,7 +50,7 @@ const { items } = Astro.props;
 </nav>
 
 <style>
-  /* Глобальный стиль a (text-blue-600) делает ссылки невидимыми на тёмном фоне — переопределяем */
+  /* Глобальный стиль a (text-primary-600) делает ссылки невидимыми на тёмном фоне — переопределяем */
   #mobile-menu-panel a {
     color: #ffffff;
     transition: color 0.2s ease;

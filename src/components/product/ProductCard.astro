@@ -13,8 +13,8 @@ const { product } = Astro.props;
 ---
 
 <div class="group bg-white border border-gray-100 rounded-xl overflow-hidden
-            hover:border-blue-200 hover:shadow-xl transition-[border-color,box-shadow,background-image] duration-300
-            hover:bg-gradient-to-br hover:from-white hover:to-blue-50/50
+            hover:border-primary-200 hover:shadow-xl transition-[border-color,box-shadow,background-image] duration-300
+            hover:bg-gradient-to-br hover:from-white hover:to-primary-50/50
             animate-fade-in-up"
      style="animation-fill-mode: both;">
   
@@ -40,7 +40,7 @@ const { product } = Astro.props;
     <div class={`absolute top-3 right-3 px-4 py-2 rounded-full text-xs font-bold transition-all
       ${product.availability === 'В наличии' 
         ? 'bg-green-500/90 text-white hover:bg-green-600' 
-        : 'bg-amber-500/90 text-white hover:bg-amber-600'}`}>
+        : 'bg-cta-500/90 text-white hover:bg-cta-600'}`}>
       {product.availability === 'В наличии' ? '✓ Есть' : '⏳ Заказ'}
     </div>
   </div>
@@ -58,7 +58,7 @@ const { product } = Astro.props;
     </div>
 
     <!-- Название -->
-    <h3 class="font-bold text-lg mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+    <h3 class="font-bold text-lg mb-2 line-clamp-2 group-hover:text-primary-600 transition-colors">
       <a href={`/products/${product.slug}`}>
         {product.name}
       </a>
@@ -88,7 +88,7 @@ const { product } = Astro.props;
       </div>
       <a
         href={`/products/${product.slug}`}
-        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-lg">
+        class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-lg">
         Подробнее
       </a>
     </div>

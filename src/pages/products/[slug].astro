@@ -8,7 +8,7 @@ import Breadcrumb from '@/components/common/Breadcrumb.astro';
 import TrustBadges from '@/components/common/TrustBadges.astro';
 import ProductDetail from '@/components/product/ProductDetail.astro';
 import Container from '@/components/layout/Container.astro';
-import { getAllProducts, getCategoryBySlug } from '@/lib/utils';
+import { getAllProducts, getAllCategories } from '@/lib/utils';
 import { generateProductSchema } from '@/lib/schema';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -24,13 +24,8 @@ interface Props {
 }
 
 const { product } = Astro.props;
-const category = await getCategoryBySlug(
-  product.categoryId === 'safes' ? 'sejfy' : 
-  product.categoryId === 'seals' ? 'plomby-i-sredstva-oplambirovaniya' :
-  product.categoryId === 'cashing' ? 'kassovye-apparaty-i-fiskalnoe-oborudovanie' :
-  product.categoryId === 'bank-equipment' ? 'bankovskoe-oborudovanie' :
-  'ofisnya-mebel'
-);
+const categories = await getAllCategories();
+const category = categories.find(c => c.id === product.categoryId) || null;
 
 const schema = generateProductSchema(product, import.meta.env.SITE || 'https://saratov-pro.github.io');
 ---

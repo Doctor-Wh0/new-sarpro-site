@@ -24,7 +24,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(items, import.meta.env.SITE ||
       <li class="flex items-center gap-2">
         <a 
           href={crumb.url} 
-          class="text-blue-600 hover:text-blue-700 transition-colors hover:underline"
+          class="text-primary-600 hover:text-primary-700 transition-colors hover:underline"
           aria-current={index === items.length - 1 ? 'page' : undefined}
         >
           {crumb.label}

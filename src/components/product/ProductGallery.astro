@@ -44,7 +44,7 @@ const getImagePath = (path: string) => {
         return (
           <button
             class={`gallery-thumbnail flex-shrink-0 w-20 h-20 rounded-lg border-2 transition ${
-              index === 0 ? 'border-blue-600' : 'border-transparent hover:border-gray-300'
+              index === 0 ? 'border-primary-600' : 'border-transparent hover:border-gray-300'
             }`}
             data-image={imagePath}
             data-index={index}
@@ -74,11 +74,11 @@ const getImagePath = (path: string) => {
           
           // Обновляем активную кнопку
           galleryThumbnails.forEach((btn) => {
-            btn.classList.remove('border-blue-600');
+            btn.classList.remove('border-primary-600');
             btn.classList.add('border-transparent');
           });
           thumbnail.classList.remove('border-transparent');
-          thumbnail.classList.add('border-blue-600');
+          thumbnail.classList.add('border-primary-600');
         }
       });
     });

@@ -49,7 +49,7 @@ export const TRUST_BADGES = [
     title: 'Гарантия качества',
     description: 'Гарантия на все товары от 1 до 3 лет',
     stat: '100%',
-    bgGradient: 'from-blue-100 to-blue-200',
+    bgGradient: 'from-primary-100 to-primary-200',
   },
   {
     icon: '🚚',
@@ -63,13 +63,13 @@ export const TRUST_BADGES = [
     title: 'Сертификаты',
     description: 'Все товары сертифицированы по ГОСТ и 54-ФЗ',
     stat: '20+',
-    bgGradient: 'from-blue-100 to-indigo-200',
+    bgGradient: 'from-primary-100 to-indigo-200',
   },
   {
     icon: '☎️',
     title: 'Поддержка 24/7',
     description: 'Вспомогательная служба работает всегда для вас',
     stat: '5мин',
-    bgGradient: 'from-amber-100 to-orange-200',
+    bgGradient: 'from-cta-100 to-orange-200',
   },
 ];

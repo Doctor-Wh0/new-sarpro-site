@@ -20,8 +20,8 @@
 @layer components {
   /* Primary button - для основных CTA */
   .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 
-           hover:from-blue-700 hover:to-blue-800 
+    @apply px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 
+           hover:from-primary-700 hover:to-primary-800 
            text-white font-bold rounded-lg
            transition-all duration-200 shadow-md hover:shadow-lg
            inline-block;
@@ -30,8 +30,8 @@
   
   /* Secondary button - для альтернативных действий */
   .btn-secondary {
-    @apply px-6 py-3 border-2 border-blue-600 text-blue-600
-           hover:bg-blue-50 font-bold rounded-lg
+    @apply px-6 py-3 border-2 border-primary-600 text-primary-600
+           hover:bg-primary-50 font-bold rounded-lg
            transition-all duration-200 inline-block;
   }
   
@@ -64,7 +64,7 @@
   
   /* Badge with blue accent */
   .badge-info {
-    @apply badge-trust bg-blue-50 text-blue-700 border-blue-200;
+    @apply badge-trust bg-primary-50 text-primary-700 border-primary-200;
   }
   
   /* Section title with gradient */
@@ -88,7 +88,7 @@
   
   /* Gradient text */
   .grad-text-blue {
-    @apply bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent;
   }
   
   /* Smooth fade on scroll */
@@ -138,12 +138,12 @@
 
   /* Ссылки */
   a {
-    @apply text-blue-600 hover:text-blue-700 transition-colors duration-200;
+    @apply text-primary-600 hover:text-primary-700 transition-colors duration-200;
     text-decoration: none;
   }
 
   a:visited {
-    @apply text-blue-800;
+    @apply text-primary-800;
   }
 
   /* SVG иконки в ссылках не наследуют цвет текста */
@@ -159,7 +159,7 @@
   /* Формы */
   input, textarea, select {
     @apply w-full px-4 py-2 border border-gray-300 rounded-lg;
-    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
     @apply transition-colors duration-200;
     font-family: inherit;
   }
@@ -222,7 +222,7 @@
 
 /* Фокусные состояния для доступности */
 *:focus-visible {
-  @apply outline outline-2 outline-offset-2 outline-blue-500;
+  @apply outline outline-2 outline-offset-2 outline-primary-500;
 }
 
 /* Печать */
