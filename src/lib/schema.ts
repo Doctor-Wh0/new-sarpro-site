@@ -87,7 +87,7 @@ export function generateOrganizationSchema(baseUrl: string) {
     '@type': 'LocalBusiness',
     name: 'ИП Абросимова Светлана Алексеевна',
     alternateName: 'SARPRO',
-    description: 'Официальный поставщик сейфов, пломб и оборудования для безопасности',
+    description: 'Официальный поставщик пломб и пломбировочных средств',
     url: baseUrl,
     logo: `${baseUrl}/assets/logos/logo.jpg`,
     image: `${baseUrl}/assets/images/og-default.jpg`,

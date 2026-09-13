@@ -9,9 +9,7 @@ const currentYear = new Date().getFullYear();
 
 const footerLinks = {
   Каталог: [
-    { label: 'Сейфы', href: '/categories/sejfy' },
     { label: 'Пломбы', href: '/categories/plomby-i-sredstva-oplambirovaniya' },
-    { label: 'Кассовые аппараты', href: '/categories/kassovye-apparaty-i-fiskalnoe-oborudovanie' },
   ],
   Информация: [
     { label: 'О нас', href: '/about' },
@@ -34,7 +32,7 @@ const footerLinks = {
       <div>
         <h3 class="font-bold text-lg mb-4 text-white">SARPRO</h3>
         <p class="text-sm text-gray-300 mb-4">
-          Официальный поставщик сейфов, пломб и оборудования для безопасности компаний в России.
+          Официальный поставщик пломб и пломбировочных средств для компаний в России.
         </p>
         <div class="flex gap-3">
           <a href={SOCIAL_LINKS.vk} target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition">
@@ -79,7 +77,7 @@ const footerLinks = {
     <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
       <p>© {currentYear} {COMPANY_INFO.name}. Все права защищены.</p>
       <p>
-        {COMPANY_INFO.inn} | {COMPANY_INFO.ogrn}
+        ИНН {COMPANY_INFO.inn} | ОГРНИП {COMPANY_INFO.ogrn}
       </p>
     </div>
   </div>

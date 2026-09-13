@@ -1,7 +1,7 @@
 {
   "name": "new-sarpro-site",
   "version": "1.0.0",
-  "description": "Modern B2B website for safes, seals, and cash equipment sales",
+  "description": "Modern B2B website for seals and sealing devices sales",
   "type": "module",
   "scripts": {
     "dev": "astro dev",

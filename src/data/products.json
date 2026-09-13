@@ -3,8 +3,8 @@
     "name": "ИП Абросимова Светлана Алексеевна",
     "nameRu": "Сарпро",
     "shortName": "SARPRO",
-    "inn": "6401055170",
-    "ogrn": "1096401000001",
+    "inn": "645410987825",
+    "ogrn": "317645100059322",
     "legalAddress": "410012, Саратовская область, Саратов, проспект 50 лет Октября, д. 24/26",
     "physicalAddress": "410012, Саратовская область, Саратов, проспект 50 лет Октября, д. 24/26",
     "email": "info@sarpro.ru",
@@ -14,14 +14,6 @@
   },
   
   "categories": [
-    {
-      "id": "safes",
-      "slug": "sejfy",
-      "name": "Сейфы",
-      "description": "Надёжные сейфы для хранения ценностей, документов и денежных средств. Все модели сертифицированы согласно российским и международным стандартам.",
-      "image": "/assets/images/products/valberg-asm-165-t-2.jpg",
-      "order": 1
-    },
     {
       "id": "seals",
       "slug": "plomby-i-sredstva-oplambirovaniya",
@@ -33,180 +25,6 @@
   ],
   
   "products": [
-    {
-      "id": "valberg-asm-120-t",
-      "categoryId": "safes",
-      "name": "VALBERG ASM-120 T",
-      "slug": "valberg-asm-120-t",
-      "description": "Офисный сейф среднего размера для хранения документов и ценностей",
-      "longDescription": "VALBERG ASM-120 T — надёжный офисный сейф, предназначенный для хранения важных документов, денежных средств и ценностей. Отличается компактными размерами и максимальной безопасностью. Двухточечный замок обеспечивает надёжную защиту. Изготовлен из высокопрочной стали. Соответствует требованиям ГОСТ 50862-2005 (класс 0).",
-      "price": null,
-      "currency": "RUB",
-      "availability": "Под заказ",
-      "manufacturer": "VALBERG",
-      "countryOfOrigin": "Россия",
-      "warranty": "2 года",
-      "specs": {
-        "width": "550 мм",
-        "depth": "390 мм",
-        "height": "1200 мм",
-        "weight": "93 кг",
-        "material": "Высокопрочная сталь",
-        "lockType": "Мультилок трёхточечный",
-        "certification": "ГОСТ 50862-2005, класс 0",
-        "fireSafety": "Нет",
-        "ventilation": "Встроенная система вентиляции"
-      },
-      "image": "/assets/images/products/valberg-asm-120-t.jpg",
-      "gallery": [
-        "/assets/images/products/valberg-asm-120-t-2.jpg"
-      ],
-      "certificates": [
-        {
-          "name": "ГОСТ 50862-2005",
-          "url": "/assets/certificates/gost-50862.pdf"
-        }
-      ],
-      "orderIndex": 1
-    },
-    {
-      "id": "valberg-asm-90-t",
-      "categoryId": "safes",
-      "name": "VALBERG ASM-90 T",
-      "slug": "valberg-asm-90-t",
-      "description": "Компактный офисный сейф с высокопрочной конструкцией",
-      "longDescription": "VALBERG ASM-90 T — компактный офисный сейф, идеален для небольших офисов, кабинетов директора и муниципальных учреждений. Обеспечивает надёжное хранение документов и ценностей. Оснащён трёхточечным замком с защитой от взлома. Лёгкие габариты при достаточной вместимости делают его универсальным решением.",
-      "price": null,
-      "currency": "RUB",
-      "availability": "Под заказ",
-      "manufacturer": "VALBERG",
-      "countryOfOrigin": "Россия",
-      "warranty": "2 года",
-      "specs": {
-        "width": "440 мм",
-        "depth": "355 мм",
-        "height": "900 мм",
-        "weight": "51 кг",
-        "material": "Высокопрочная сталь",
-        "lockType": "Мультилок трёхточечный",
-        "certification": "ГОСТ 50862-2005, класс 0"
-      },
-      "image": "/assets/images/products/valberg-asm-90-t.jpg",
-      "gallery": [
-        "/assets/images/products/valberg-asm-90-t-1.jpg",
-        "/assets/images/products/valberg-asm-90-t-2.jpg"
-      ],
-      "certificates": [
-        {
-          "name": "ГОСТ 50862-2005",
-          "url": "/assets/certificates/gost-50862.pdf"
-        }
-      ],
-      "orderIndex": 2
-    },
-    {
-      "id": "valberg-asm-165-t",
-      "categoryId": "safes",
-      "name": "VALBERG ASM-165 T",
-      "slug": "valberg-asm-165-t",
-      "description": "Большой офисный сейф для максимального хранилища",
-      "longDescription": "VALBERG ASM-165 T — большой офисный сейф с максимальным объёмом хранения. Предназначен для банков, крупных компаний и учреждений, требующих вместительного защищённого хранилища. Изготовлен из толстостенной стали. Отличается повышенной взломостойкостью и надёжностью.",
-      "price": null,
-      "currency": "RUB",
-      "availability": "Под заказ",
-      "manufacturer": "VALBERG",
-      "countryOfOrigin": "Россия",
-      "warranty": "2 года",
-      "specs": {
-        "width": "600 мм",
-        "depth": "460 мм",
-        "height": "1650 мм",
-        "weight": "157 кг",
-        "material": "Высокопрочная сталь",
-        "lockType": "Ключевой",
-        "certification": "ГОСТ 50862-2005, класс 1"
-      },
-      "image": "/assets/images/products/valberg-asm-165-t.jpg",
-      "gallery": [
-        "/assets/images/products/valberg-asm-165-t-1.jpg",
-        "/assets/images/products/valberg-asm-165-t-2.jpg"
-      ],
-      "certificates": [
-        {
-          "name": "ГОСТ 50862-2005",
-          "url": "/assets/certificates/gost-50862.pdf"
-        }
-      ],
-      "orderIndex": 3
-    },
-    {
-      "id": "ognestoika-safe-3",
-      "categoryId": "safes",
-      "name": "Огнестойкий сейф класс 3",
-      "slug": "ognestoika-safe-klassa-3",
-      "description": "Огнестойкий сейф, выдерживающий температуру до 1000°C",
-      "longDescription": "Огнестойкий сейф класса 3 предназначен для защиты документов и ценностей от пожара. Выдерживает воздействие высоких температур до 1000°C в течение 30 минут. Изолирующие материалы предотвращают прямую передачу тепла содержимому. Идеален для офисов, архивов и хранилищ документов.",
-      "price": null,
-      "currency": "RUB",
-      "availability": "Под заказ",
-      "manufacturer": "VALBERG",
-      "countryOfOrigin": "Россия",
-      "warranty": "2 года",
-      "specs": {
-        "width": "600 мм",
-        "depth": "450 мм",
-        "height": "450 мм",
-        "weight": "280 кг",
-        "material": "Стальной корпус с огнестойкой изоляцией",
-        "fireSafety": "Класс 3 - 1000°C/30 мин",
-        "certification": "ГОСТ 50862-2005, класс 0"
-      },
-      "image": "/assets/images/products/fire-safe-3.jpg",
-      "gallery": [
-        "/assets/images/products/fire-safe-3-2.jpg"
-      ],
-      "certificates": [
-        {
-          "name": "ГОСТ 50862-2005",
-          "url": "/assets/certificates/gost-50862.pdf"
-        }
-      ],
-      "orderIndex": 4
-    },
-    {
-      "id": "vzlomostoika-safe-2",
-      "categoryId": "safes",
-      "name": "Взломостойкий сейф класс II",
-      "slug": "vzlomostoika-safe-klassa-2",
-      "description": "Взломостойкий сейф II класса с усиленной защитой",
-      "longDescription": "Взломостойкий сейф класса II обеспечивает максимальную защиту от попыток вскрытия. Оснащён двойным замком и толстостенным корпусом из высокопрочной стали. Предназначен для хранения денежных средств, ценных бумаг и критически важных документов.",
-      "price": null,
-      "currency": "RUB",
-      "availability": "По запросу",
-      "manufacturer": "VALBERG",
-      "countryOfOrigin": "Россия",
-      "warranty": "3 года",
-      "specs": {
-        "width": "700 мм",
-        "depth": "600 мм",
-        "height": "400 mм",
-        "weight": "350 кг",
-        "material": "Толстостенная высокопрочная сталь",
-        "lockType": "Двойной замок",
-        "certification": "ГОСТ 50862-2005, класс II"
-      },
-      "image": "/assets/images/products/safe-class-2.jpg",
-      "gallery": [
-        "/assets/images/products/safe-class-2-2.jpg"
-      ],
-      "certificates": [
-        {
-          "name": "ГОСТ 50862-2005",
-          "url": "/assets/certificates/gost-50862.pdf"
-        }
-      ],
-      "orderIndex": 5
-    },
     {
       "id": "indicatornaya-plomba-vinyl",
       "categoryId": "seals",
