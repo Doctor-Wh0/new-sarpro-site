@@ -33,6 +33,7 @@ export interface Product {
   name: string;
   slug: string;
   description: string;
+  metaDescription?: string;
   longDescription: string;
   price?: number | null;
   currency: string;

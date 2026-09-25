@@ -32,7 +32,7 @@ const schema = generateProductSchema(product, import.meta.env.SITE || 'https://s
 
 <BaseLayout 
   title={`${product.name} — купить в SARPRO`}
-  description={product.description}
+  description={product.metaDescription ?? product.description}
   image={product.image}
   keywords={[product.name, product.manufacturer, 'купить', 'SARPRO']}
   ogType="product"
