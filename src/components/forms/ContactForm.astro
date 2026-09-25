@@ -150,7 +150,7 @@
   if (form) {
     const startTime = Date.now();
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       errorMessage!.classList.add('hidden');
 
@@ -210,24 +210,42 @@
         return;
       }
 
-      // Отправка формы через mailto (статический сайт без сервера)
-      const city = (formData.get('city') as string) || '';
-      const subject = `Заявка с сайта: ${name}`;
-      const body = [
-        `Имя: ${name}`,
-        `Email: ${email}`,
-        `Телефон: ${phone}`,
-        city ? `Город: ${city}` : '',
-        '',
-        message
-      ].filter(Boolean).join('\n');
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      submitBtn.disabled = true;
 
-      window.location.href = `mailto:info@sarpro.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      try {
+        const res = await fetch('https://formspree.io/f/mdekllqq', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            city: (formData.get('city') as string) || '',
+            message,
+            acceptTerms: Boolean(acceptTerms),
+          }),
+        });
 
-      successMessage!.textContent = '✓ Открываем почтовый клиент. Если письмо не открылось автоматически, напишите нам на info@sarpro.ru.';
-      successMessage!.classList.remove('hidden');
-      form.reset();
-      setTimeout(() => successMessage!.classList.add('hidden'), 8000);
+        if (res.ok) {
+          successMessage!.textContent = '✓ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.';
+          successMessage!.classList.remove('hidden');
+          form.reset();
+          setTimeout(() => successMessage!.classList.add('hidden'), 8000);
+        } else {
+          const err = await res.json().catch(() => null);
+          const msg = err?.message || err?.errors?.map((e: { message: string }) => e.message).join(', ');
+          errorMessage!.textContent = msg
+            ? `⚠ ${msg}`
+            : '⚠ Не удалось отправить заявку. Попробуйте позже или напишите нам на info@sarpro.ru.';
+          errorMessage!.classList.remove('hidden');
+        }
+      } catch {
+        errorMessage!.textContent = '⚠ Не удалось отправить заявку. Проверьте интернет-соединение или напишите нам на info@sarpro.ru.';
+        errorMessage!.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+      }
     });
   }
 </script>
