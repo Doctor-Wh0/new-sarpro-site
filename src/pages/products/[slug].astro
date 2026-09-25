@@ -36,6 +36,7 @@ const schema = generateProductSchema(product, import.meta.env.SITE || 'https://s
   image={product.image}
   keywords={[product.name, product.manufacturer, 'купить', 'SARPRO']}
   ogType="product"
+  schema={schema}
 >
   <Container>
     <!-- Breadcrumb -->
@@ -51,6 +52,4 @@ const schema = generateProductSchema(product, import.meta.env.SITE || 'https://s
   </Container>
 
   <TrustBadges />
-
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 </BaseLayout>

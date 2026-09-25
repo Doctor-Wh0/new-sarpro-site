@@ -31,11 +31,6 @@ export function generateProductSchema(product: Product, baseUrl: string) {
         name: 'SARPRO',
       },
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '100',
-    },
   };
 }
 
@@ -103,11 +98,6 @@ export function generateOrganizationSchema(baseUrl: string) {
     },
     areaServed: 'RU',
     priceRange: '$$',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '100',
-    },
     sameAs: [
       'https://vk.com/sarpro',
       'https://t.me/sarpro_oficial',
@@ -137,5 +127,54 @@ export function generateOpenGraphTags(
     'twitter:title': title,
     'twitter:description': description,
     'twitter:image': image,
+  };
+}
+
+/**
+ * Генерирует Schema.org FAQPage
+ */
+export function generateFaqPageSchema(questions: Array<{ question: string; answer: string }>, baseUrl: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: questions.map((q) => ({
+      '@type': 'Question',
+      name: q.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: q.answer,
+      },
+    })),
+  };
+}
+
+/**
+ * Генерирует Schema.org WebPage
+ */
+export function generateWebPageSchema(title: string, description: string, url: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url,
+  };
+}
+
+/**
+ * Генерирует Schema.org ItemList
+ */
+export function generateItemListSchema(items: Array<{ name: string; url: string }>, name: string, description: string, baseUrl: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    description,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: `${baseUrl}${item.url}`,
+    })),
   };
 }

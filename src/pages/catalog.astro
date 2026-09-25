@@ -8,14 +8,22 @@ import TrustBadges from '@/components/common/TrustBadges.astro';
 import ProductCard from '@/components/product/ProductCard.astro';
 import Container from '@/components/layout/Container.astro';
 import { getAllProducts, getAllCategories } from '@/lib/utils';
+import { generateItemListSchema } from '@/lib/schema';
 
 const products = await getAllProducts();
 const categories = await getAllCategories();
+const baseUrl = import.meta.env.SITE || 'https://saratov-pro.github.io';
 ---
 
 <BaseLayout 
   title="Каталог товаров — SARPRO"
   description="Полный каталог пломб и пломбировочных средств от SARPRO."
+  schema={generateItemListSchema(
+    products.map(p => ({ name: p.name, url: `/products/${p.slug}` })),
+    'Каталог товаров',
+    'Полный каталог пломб и пломбировочных средств от SARPRO',
+    baseUrl
+  )}
 >
   <Container>
     <!-- Breadcrumb -->

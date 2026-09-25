@@ -10,15 +10,20 @@ import ProductCard from '@/components/product/ProductCard.astro';
 import Container from '@/components/layout/Container.astro';
 import { getAllCategories, getAllProducts } from '@/lib/utils';
 import { COMPANY_INFO } from '@/lib/constants';
+import { generateWebPageSchema } from '@/lib/schema';
 
 const categories = await getAllCategories();
 const allProducts = await getAllProducts();
 const featuredProducts = allProducts.slice(0, 6);
+const baseUrl = import.meta.env.SITE || 'https://saratov-pro.github.io';
+const title = 'SARPRO — пломбы и пломбировочные средства';
+const description = 'Официальный поставщик пломб и пломбировочных средств. Доставка по РФ. Гарантия качества.';
 ---
 
 <BaseLayout 
-  title="SARPRO — пломбы и пломбировочные средства"
-  description="Официальный поставщик пломб и пломбировочных средств. Доставка по РФ. Гарантия качества."
+  title={title}
+  description={description}
+  schema={generateWebPageSchema(title, description, `${baseUrl}/`)}
 >
   <!-- Hero section -->
   <section class="relative pt-16 pb-24 md:pt-24 md:pb-40 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 overflow-hidden">

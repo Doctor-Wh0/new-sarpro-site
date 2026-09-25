@@ -7,11 +7,24 @@ import Breadcrumb from '@/components/common/Breadcrumb.astro';
 import TrustBadges from '@/components/common/TrustBadges.astro';
 import Container from '@/components/layout/Container.astro';
 import { PAYMENT_METHODS, DELIVERY_METHODS } from '@/lib/constants';
+import { generateFaqPageSchema } from '@/lib/schema';
+
+const baseUrl = import.meta.env.SITE || 'https://saratov-pro.github.io';
 ---
 
 <BaseLayout 
   title="Доставка и оплата — SARPRO"
   description="Информация о доставке товаров по России и способах оплаты."
+  schema={generateFaqPageSchema([
+    {
+      question: 'Как узнать стоимость доставки?',
+      answer: 'Свяжитесь с нами по телефону или заполните форму на странице контактов. Мы пришлём смету в течение 24 часов.',
+    },
+    {
+      question: 'Есть ли скидки на оптовые заказы?',
+      answer: 'Да! При заказе от 10 товаров предусмотрены скидки. Свяжитесь с нами для уточнения условий.',
+    },
+  ], baseUrl)}
 >
   <Container>
     <Breadcrumb items={[

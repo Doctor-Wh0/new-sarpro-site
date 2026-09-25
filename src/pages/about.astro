@@ -7,11 +7,17 @@ import Breadcrumb from '@/components/common/Breadcrumb.astro';
 import TrustBadges from '@/components/common/TrustBadges.astro';
 import Container from '@/components/layout/Container.astro';
 import { COMPANY_INFO } from '@/lib/constants';
+import { generateWebPageSchema } from '@/lib/schema';
+
+const baseUrl = import.meta.env.SITE || 'https://saratov-pro.github.io';
+const title = 'О компании SARPRO';
+const description = 'Узнайте больше о компании SARPRO, нашей истории, миссии и ценностях.';
 ---
 
 <BaseLayout 
-  title="О компании SARPRO"
-  description="Узнайте больше о компании SARPRO, нашей истории, миссии и ценностях."
+  title={title}
+  description={description}
+  schema={generateWebPageSchema(title, description, `${baseUrl}/about`)}
 >
   <Container>
     <Breadcrumb items={[

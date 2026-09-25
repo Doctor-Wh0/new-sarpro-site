@@ -6,11 +6,17 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumb from '@/components/common/Breadcrumb.astro';
 import Container from '@/components/layout/Container.astro';
 import { COMPANY_INFO } from '@/lib/constants';
+import { generateWebPageSchema } from '@/lib/schema';
+
+const baseUrl = import.meta.env.SITE || 'https://saratov-pro.github.io';
+const title = 'Политика конфиденциальности — SARPRO';
+const description = 'Политика конфиденциальности и обработки персональных данных SARPRO.';
 ---
 
 <BaseLayout 
-  title="Политика конфиденциальности — SARPRO"
-  description="Политика конфиденциальности и обработки персональных данных SARPRO."
+  title={title}
+  description={description}
+  schema={generateWebPageSchema(title, description, `${baseUrl}/privacy`)}
 >
   <Container>
     <Breadcrumb items={[

@@ -17,6 +17,7 @@ interface Props {
   canonical?: string;
   robots?: string;
   ogType?: 'website' | 'article' | 'product';
+  schema?: object | object[];
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   canonical = Astro.url.href,
   robots = SITE_CONFIG.robots,
   ogType = 'website',
+  schema,
 } = Astro.props;
 
 const baseUrl = import.meta.env.SITE || 'https://saratov-pro.github.io';
@@ -85,7 +87,10 @@ const organizationSchema = generateOrganizationSchema(baseUrl);
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-    
+    {Array.isArray(schema) ? schema : [schema].filter(Boolean).map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
+
     <!-- Google Analytics (если есть) -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXX"></script>
     <script>

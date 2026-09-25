@@ -15,7 +15,10 @@ interface Props {
 
 const { items } = Astro.props;
 
-const breadcrumbSchema = generateBreadcrumbSchema(items, import.meta.env.SITE || 'https://saratov-pro.github.io');
+const breadcrumbSchema = generateBreadcrumbSchema(
+  items.map(i => ({ name: i.label, url: i.url })),
+  import.meta.env.SITE || 'https://saratov-pro.github.io'
+);
 ---
 
 <nav aria-label="Breadcrumb" class="my-4">

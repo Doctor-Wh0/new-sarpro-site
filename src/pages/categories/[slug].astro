@@ -33,6 +33,7 @@ const schema = generateCategorySchema(category, products, import.meta.env.SITE |
   description={category.description}
   image={category.image}
   keywords={[category.name, 'купить', 'SARPRO']}
+  schema={schema}
 >
   <Container>
     <!-- Breadcrumb -->
@@ -67,6 +68,4 @@ const schema = generateCategorySchema(category, products, import.meta.env.SITE |
   </Container>
 
   <TrustBadges />
-
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 </BaseLayout>

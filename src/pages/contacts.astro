@@ -8,11 +8,17 @@ import TrustBadges from '@/components/common/TrustBadges.astro';
 import Container from '@/components/layout/Container.astro';
 import ContactForm from '@/components/forms/ContactForm.astro';
 import { COMPANY_INFO } from '@/lib/constants';
+import { generateWebPageSchema } from '@/lib/schema';
+
+const baseUrl = import.meta.env.SITE || 'https://saratov-pro.github.io';
+const title = 'Контакты — SARPRO';
+const description = 'Свяжитесь с SARPRO. Адрес, телефон, email и форма обратной связи.';
 ---
 
 <BaseLayout 
-  title="Контакты — SARPRO"
-  description="Свяжитесь с SARPRO. Адрес, телефон, email и форма обратной связи."
+  title={title}
+  description={description}
+  schema={generateWebPageSchema(title, description, `${baseUrl}/contacts`)}
 >
   <Container>
     <Breadcrumb items={[
